@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  db:
+    image: 'mysql:5.7'
+    platform: linux/amd64
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=toor'
+      - 'MYSQL_DATABASE=spaarple'
+      - 'MYSQL_USER=spaarple'
+      - 'MYSQL_PASSWORD=spaarple'
+    ports:
+      - '3306:3306'
+    volumes:
+      - db-data:/var/lib/mysql:rw
+    networks:
+      - spaarple
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8081:80'
+    depends_on:
+      - db
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+    networks:
+      - spaarple
+
+  www:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile
+    ports:
+      - '8080:80'
+    volumes:
+      - ./docker/web/vhosts:/etc/apache2/sites-enabled
+      - ./:/var/www
+    restart: always
+    networks:
+      - spaarple
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+    networks:
+      - spaarple
+
+networks:
+  spaarple:
+    driver: bridge
+
+volumes:
+  db-data:
