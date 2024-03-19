@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="card card-md">
+                {{ form_start(form) }}
+                <div class="card-body">
+                    <h2 class="h2 text-center mb-4">CarsFleet - Inscription</h2>
+                    <div class="row row-cards">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="mb-3">
+                                {{ form_row(form.lastName) }}
+                                {{ form_row(form.email) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="mb-3">
+                                {{ form_row(form.firstName) }}
+                                {{ form_row(form.password) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-footer text-center">
+                        <button type="submit" class="btn btn-primary w-50">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+            <div class="text-center text-muted mt-3">
+                Vous avez déjà un compte ? <a href="{{ path('app_login') }}" tabindex="-1">Se connecter</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
