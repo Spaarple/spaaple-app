@@ -1,0 +1,29 @@
+<header class="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-white/80 backdrop-blur-lg dark:bg-gray-950/75">
+    <div class="container mx-auto">
+        <div class="flex  justify-between items-center">
+            <div class="flex flex-row gap-8 items-center">
+                <img src="{{ asset('images/dark-logo.svg') }}" alt="Spaarple identité" height="150em" width="150em">
+            </div>
+            <div class="flex flex-row gap-6">
+                <div class="md:flex hidden flex-row gap-6 items-center">
+                    <a href="#work" class="text-body-sm font-medium text-neutral-700 hover:text-primary-600 px-4">
+                        Réalisations
+                    </a>
+                    <a href="#services" class="text-body-sm font-medium text-neutral-700 hover:text-primary-600 px-4">
+                        Nos Valeurs
+                    </a>
+                    <a href="#integration" class="text-body-sm font-medium text-neutral-700 hover:text-primary-600 px-4">
+                        Intégration
+                    </a>
+                    <a href="{{ path('app_login') }}" class="text-body-sm font-medium text-neutral-700 hover:text-primary-600 px-4">
+                        Connexion
+                    </a>
+                </div>
+                <a href="mailto:bonjour@spaarple.fr"
+                   class="text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                    Demande d'informations
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
