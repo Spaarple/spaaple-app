@@ -10,4 +10,7 @@
             @apply text-neutral-900;
         }
     }
+    @layer components {
+        /*  Add components style here */
+    }
 }
