@@ -53,7 +53,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('CarsFleet')
+            ->setTitle('Spaarple')
             ->setTranslationDomain('admin')
             ->disableUrlSignatures();
     }
