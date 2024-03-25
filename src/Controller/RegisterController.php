@@ -33,14 +33,14 @@ class RegisterController extends AbstractController
      * @return Response
      */
     #[Route('/', name: '_index')]
-    public function registerByRole(Request $request, UserPasswordHasherInterface $userPasswordHasher,): Response
+    public function registerByRole(Request $request, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $user = new UserAdministrator();
         $form = $this->createForm(RegisterType::class, $user);
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
 
             $password = $userPasswordHasher->hashPassword($user, $user->getPassword());

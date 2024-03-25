@@ -3,31 +3,24 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="page page-center">
-        <div class="container container-tight py-4">
-            <div class="card card-md">
-                {{ form_start(form) }}
-                <div class="card-body">
-                    <h2 class="h2 text-center mb-4">CarsFleet - Inscription</h2>
-                    <div class="row row-cards">
-                        <div class="col-sm-6 col-md-6">
-                            <div class="mb-3">
-                                {{ form_row(form.lastName) }}
-                                {{ form_row(form.email) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                            <div class="mb-3">
-                                {{ form_row(form.firstName) }}
-                                {{ form_row(form.password) }}
-                            </div>
-                        </div>
-                    </div>
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-20">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                Inscription
+            </h2>
+        </div>
 
-                    <div class="form-footer text-center">
-                        <button type="submit" class="btn btn-primary w-50">S'inscrire</button>
-                    </div>
-                </div>
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            {{ form_start(form) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.password) }}
+            <div class="flex flex-col items-center">
+                <button class="hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                    S'inscrire
+                </button>
             </div>
             {{ form_end(form) }}
             <div class="text-center text-muted mt-3">
