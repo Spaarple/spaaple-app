@@ -54,6 +54,12 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     #[ORM\Column(type: Types::STRING, length: 255)]
     private string $firstName;
 
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?bool $isBlocked = null;
+
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?bool $isVerified = null;
+
     public function __construct()
     {}
 
@@ -190,6 +196,44 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsBlocked(): ?bool
+    {
+        return $this->isBlocked;
+    }
+
+    /**
+     * @param bool $isBlocked
+     * @return $this
+     */
+    public function setIsBlocked(bool $isBlocked): static
+    {
+        $this->isBlocked = $isBlocked;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    /**
+     * @param bool $isVerified
+     * @return $this
+     */
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }
