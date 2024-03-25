@@ -3,23 +3,25 @@
 {% block title %}Reset your password{% endblock %}
 
 {% block body %}
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        {% for flash_error in app.flashes('reset_password_error') %}
-            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-        {% endfor %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-20">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Réinitialisation de votre mot de passe
+                Changement de mot de passe
             </h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             {{ form_start(resetForm) }}
-            {{ form_row(resetForm.plainPassword) }}
-            <div>
-                <button class="flex items-center justify-center rounded-full bg-primary-600 text-white font-semibold px-6 py-4 text-body-sm">
-                    Réinitialiser le mot de passe
+            {{ form_row(resetForm.plainPassword.first) }}
+            {{ form_row(resetForm.plainPassword.second) }}
+            <div class="flex flex-col items-center">
+                <button class="hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                    Confirmer le changement de mot de passe
                 </button>
             </div>
             {{ form_end(resetForm) }}
