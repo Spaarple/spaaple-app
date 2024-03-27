@@ -23,38 +23,43 @@ class EstimateYoursSiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('integration', ChoiceType::class, [
-                'choices' => Integration::asArrayInverted(),
-                'required' => true,
+
+            ->add('integration', EnumType::class, [
+                'class' => Integration::class,
+                'label' => 'Quelles intégrations souhaitez-vous ? (Plusieurs choix possibles)',
+                'choice_label' => 'value',
+                'choice_value' => 'name',
                 'expanded' => true,
                 'multiple' => true,
-                'label' => false,
+                'required' => true,
             ])
-            ->add('cms',EnumType::class, [
+            ->add('cms', EnumType::class, [
                 'class' => CMS::class,
                 'label' => 'Quel CMS souhaitez-vous utilisez ?',
                 'choice_label' => 'value',
                 'choice_value' => 'name',
-                'expanded' => false,
+                'expanded' => true,
                 'multiple' => false,
+                'required' => true,
             ])
             ->add('page', EnumType::class, [
                 'class' => NumberPage::class,
                 'label' => 'Nombre de pages du site',
                 'choice_label' => 'value',
                 'choice_value' => 'name',
-                'expanded' => false,
+                'expanded' => true,
                 'multiple' => false,
+                'required' => true,
             ])
             ->add('complexity', EnumType::class, [
                 'class' => Complexity::class,
-                'label' => 'Complexité',
+                'label' => 'Comment estimez-vous la complexité du site ?',
                 'choice_label' => 'value',
                 'choice_value' => 'name',
-                'expanded' => false,
+                'expanded' => true,
                 'multiple' => false,
-            ])
-        ;
+                'required' => true,
+            ]);
     }
 
     /**
