@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Entity\User\UserClient;
+use App\Enum\CMS;
+use App\Enum\Complexity;
+use App\Enum\NumberPage;
 use App\Repository\EstimateRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,20 +21,20 @@ class Estimate
     private ?Uuid $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'estimates')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?UserClient $userClient = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $integration = [];
 
-    #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $cms = null;
+    #[ORM\Column(type: Types::STRING, length: 255, enumType: CMS::class)]
+    private CMS $cms;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $page = null;
+    #[ORM\Column(type: Types::STRING, length: 255, enumType: NumberPage::class)]
+    private NumberPage $page;
 
-    #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $complexity = null;
+    #[ORM\Column(type: Types::STRING, length: 255, enumType: Complexity::class)]
+    private Complexity $complexity;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $result = null;
@@ -83,18 +86,18 @@ class Estimate
     }
 
     /**
-     * @return string|null
+     * @return CMS
      */
-    public function getCms(): ?string
+    public function getCms(): CMS
     {
         return $this->cms;
     }
 
     /**
-     * @param string $cms
+     * @param CMS $cms
      * @return $this
      */
-    public function setCms(string $cms): static
+    public function setCms(CMS $cms): static
     {
         $this->cms = $cms;
 
@@ -102,18 +105,18 @@ class Estimate
     }
 
     /**
-     * @return int|null
+     * @return NumberPage
      */
-    public function getPage(): ?int
+    public function getPage(): NumberPage
     {
         return $this->page;
     }
 
     /**
-     * @param int $page
+     * @param NumberPage $page
      * @return $this
      */
-    public function setPage(int $page): static
+    public function setPage(NumberPage $page): static
     {
         $this->page = $page;
 
@@ -121,18 +124,18 @@ class Estimate
     }
 
     /**
-     * @return string|null
+     * @return Complexity|null
      */
-    public function getComplexity(): ?string
+    public function getComplexity(): ?Complexity
     {
         return $this->complexity;
     }
 
     /**
-     * @param string $complexity
+     * @param Complexity $complexity
      * @return $this
      */
-    public function setComplexity(string $complexity): static
+    public function setComplexity(Complexity $complexity): static
     {
         $this->complexity = $complexity;
 
