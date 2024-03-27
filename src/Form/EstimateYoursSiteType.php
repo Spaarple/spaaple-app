@@ -44,7 +44,7 @@ class EstimateYoursSiteType extends AbstractType
             ])
             ->add('page', EnumType::class, [
                 'class' => NumberPage::class,
-                'label' => 'Nombre de pages du site',
+                'label' => 'A combien de pages estimez-vous votre site ?',
                 'choice_label' => 'value',
                 'choice_value' => 'name',
                 'expanded' => true,
