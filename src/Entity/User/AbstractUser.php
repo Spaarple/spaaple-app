@@ -55,10 +55,10 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     private string $firstName;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private ?bool $isBlocked = null;
+    private ?bool $isBlocked = false;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private ?bool $isVerified = null;
+    private ?bool $isVerified = false;
 
     public function __construct()
     {}

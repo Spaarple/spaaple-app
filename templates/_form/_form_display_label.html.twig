@@ -1,0 +1,16 @@
+{% use "_form/_checkbox_row.html.twig" %}
+
+{% block form_label -%}
+    {%- if label is same as(false) -%}
+        <div class="{{ block('form_label_class') }}"></div>
+    {%- else -%}
+        {%- set row_class = row_class|default(row_attr.class|default('')) -%}
+        {%- if 'form-floating' not in row_class and 'input-group' not in row_class -%}
+            {%- if expanded is not defined or not expanded -%}
+                {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' d-none col-form-label')|trim}) -%}
+            {%- endif -%}
+            {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ block('form_label_class'))|trim}) -%}
+        {%- endif -%}
+        {{- parent() -}}
+    {%- endif -%}
+{%- endblock form_label %}

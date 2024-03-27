@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\User\UserAdministrator;
+use App\Entity\User\UserClient;
 use App\Form\RegisterType;
 use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,7 +36,7 @@ class RegisterController extends AbstractController
     #[Route('/', name: '_index')]
     public function registerByRole(Request $request, UserPasswordHasherInterface $userPasswordHasher): Response
     {
-        $user = new UserAdministrator();
+        $user = new UserClient();
         $form = $this->createForm(RegisterType::class, $user);
 
         $form->handleRequest($request);

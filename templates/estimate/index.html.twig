@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spaarple - Estimation d'application web{% endblock %}
+
+{% block body %}
+    <div class="grid grid-cols-6 gap-4">
+        <div class="col-start-2 col-span-4">
+            <div class="flex min-h-full flex-col justify-center">
+                <div class="space-y-12">
+                    <div class="border-b border-gray-900/10 pb-12 text-center">
+                        <h1 class="text-base font-semibold leading-7 text-gray-900">Estimation de votre site</h1>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+                    </div>
+                </div>
+                <div class="mt-10 sm:mx-auto sm:w-full">
+                    {{ form_start(form) }}
+                    {{ form_row(form.integration) }}
+                    {{ form_row(form.cms) }}
+                    {{ form_row(form.page) }}
+                    {{ form_row(form.complexity) }}
+                    <div class="flex flex-col items-center mb-20">
+                        <button class="hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                            Estimer votre site
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

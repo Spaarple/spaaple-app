@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\Users\UserCrudController;
+use App\Entity\Estimate;
+use App\Entity\EstimateData;
 use App\Entity\User\AbstractUser;
 use App\Entity\User\UserAdministrator;
 use App\Entity\User\UserClient;
@@ -51,7 +53,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('CarsFleet')
+            ->setTitle('Spaarple')
             ->setTranslationDomain('admin')
             ->disableUrlSignatures();
     }
@@ -67,6 +69,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Administrateurs', null, UserAdministrator::class),
             MenuItem::linkToCrud('Clients', null, UserClient::class),
         ])->setBadge($this->userRepository->count([]), 'primary');
+        yield MenuItem::subMenu('Estimations', 'fa-solid fa-coins')->setSubItems([
+            MenuItem::linkToCrud('Données des estimations', null, EstimateData::class),
+            MenuItem::linkToCrud('Estimations Clients', null, Estimate::class),
+        ]);
+
 
         yield MenuItem::section('Paramètres du compte');
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');

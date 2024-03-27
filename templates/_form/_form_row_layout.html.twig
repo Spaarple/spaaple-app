@@ -1,3 +1,5 @@
+{% use "_form/_checkbox_row.html.twig" %}
+
 {%- block form_row -%}
     {%- if compound is defined and compound -%}
         {%- set element = 'fieldset' -%}
@@ -9,13 +11,30 @@
     {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
     <{{ element|default('div') }}{% with {attr: row_attr|merge({class: row_class})} %}{{ block('attributes') }}{% endwith %}>
     {%- if 'form-floating' in row_class -%}
-        {{- form_widget(form, widget_attr|merge({attr: {'class': 'block w-full rounded-lg border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-darkness-500 placeholder:text-gray-500 p-4 focus:rounded-lg focus:outline-none focus:ring-1 focus:ring-darkness-500 focus:ring-opacity-50 sm:text-sm sm:leading-6'}})) -}}
-        {{- form_label(form) -}}
+        {{- form_widget(form, widget_attr|merge({attr:
+            {'class': 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                           focus:ring-neutral-900 focus:border-darkness-500 block w-full p-2.5 dark:bg-gray-700
+                           dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                           dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            }
+        })) -}}
+        {%- block form_label -%}
+            {% if label is not same as(false) -%}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' text-base font-semibold leading-7 text-gray-900')|trim}) %}
+                <label {% with {attr: label_attr} %}{{ block('attributes') }}{% endwith %}>{{ label|trans({}, translation_domain) }}</label>
+            {%- endif -%}
+        {%- endblock form_label %}
     {%- else -%}
     {%- endif -%}
     {{- form_help(form) -}}
     {{- form_errors(form) -}}
     {{- form_label(form) -}}
-    {{- form_widget(form, widget_attr|merge({attr: {'class': 'block w-full rounded-lg border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-darkness-500 placeholder:text-gray-500 p-4 focus:rounded-lg focus:outline-none focus:ring-1 focus:ring-darkness-500 focus:ring-opacity-50 sm:text-sm sm:leading-6'}})) -}}
+    {{- form_widget(form, widget_attr|merge({attr: {
+        'class': 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                           focus:ring-neutral-900 focus:border-darkness-500 block w-full p-2.5 dark:bg-gray-700
+                           dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                           dark:focus:ring-blue-500 dark:focus:border-blue-500'
+    }
+    })) -}}
     </{{ element|default('div') }}>
 {%- endblock form_row %}
