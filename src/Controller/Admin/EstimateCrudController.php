@@ -3,8 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Estimate;
+use App\Entity\User\UserClient;
 use App\Enum\CMS;
+use App\Enum\Complexity;
 use App\Enum\Integration;
+use App\Enum\NumberPage;
+use App\Form\Admin\Field\EnumField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -30,7 +34,6 @@ class EstimateCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->showEntityActionsInlined()
             ->setPageTitle('index', 'Gestion des Estimation')
             ->setPageTitle('detail', 'Détail de l\'estimation')
             ->setPageTitle('edit', 'Modification de l\'estimation');
@@ -43,14 +46,23 @@ class EstimateCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('userClient', 'Client'),
+            AssociationField::new('userClient', 'Client')
+                ->formatValue(function ($value, $entity) {
+                    if($entity instanceof Estimate && $entity->getUserClient() instanceof UserClient) {
+                        return sprintf(
+                            '%s %s',
+                            $entity->getUserClient()->getFirstname(),
+                            $entity->getUserClient()->getLastname()
+                        );
+                    }
+                    return null;
+                }),
             ChoiceField::new('integration', 'Intégration')
                 ->allowMultipleChoices()
                 ->setChoices(Integration::asArrayInverted()),
-            ChoiceField::new('cms', 'CMS')
-                ->setChoices(CMS::asArrayInverted()),
-            NumberField::new('page', 'Nombre de page'),
-            TextField::new('complexity', 'Complexité'),
+            EnumField::setEnumClass(CMS::class)::new('cms', 'CMS'),
+            EnumField::setEnumClass(NumberPage::class)::new('page', 'Nombre de page'),
+            EnumField::setEnumClass(Complexity::class)::new('complexity', 'Complexité'),
             NumberField::new('result', 'Résultat'),
         ];
     }
