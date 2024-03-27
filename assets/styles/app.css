@@ -9,6 +9,10 @@
         body {
             @apply text-neutral-900;
         }
+        lord-icon {
+           width: 75px;
+           height: 75px;
+        }
     }
     @layer components {
     }
