@@ -10,7 +10,7 @@ enum CMS: string
 {
     use EnumTrait;
 
+    case AUCUN = 'Site sur mesure';
     case SHOPIFY = 'Shopify';
     case WORDPRESS = 'Wordpress';
-    case AUCUN = 'Aucun CMS - Je veux un site sur mesure';
 }
