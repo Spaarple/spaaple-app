@@ -8,7 +8,9 @@
             <div class="flex min-h-full flex-col justify-center mt-20">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12 text-center">
-                        <h1 class="text-base font-semibold leading-7 text-gray-900">Estimation de votre site</h1>
+                        <h1 class="lg:text-display-1xl md:text-display-xl text-display-md font-semibold pb-10">
+                            Estimation de votre site
+                        </h1>
                         <p class="mt-1 text-sm leading-6 text-gray-600">
                             Remplissez ce formulaire pour obtenir une estimation personnalisée de votre site et entrer<br>
                             en contact avec notre équipe dès aujourd'hui pour discuter de vos besoins et objectifs en ligne.
@@ -17,10 +19,10 @@
                 </div>
                 <div class="mt-10 sm:mx-auto sm:w-full">
                     {{ form_start(form) }}
-                    {{ form_row(form.integration) }}
                     {{ form_row(form.cms) }}
-                    {{ form_row(form.page) }}
                     {{ form_row(form.complexity) }}
+                    {{ form_row(form.integration) }}
+                    {{ form_row(form.page) }}
                     <div class="flex flex-col items-center mb-20">
                         <button class="hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
                             py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
