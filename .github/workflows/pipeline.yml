@@ -14,7 +14,7 @@ jobs:
           MYSQL_DATABASE: spaarple
           MYSQL_USER: spaarple
           MYSQL_PASSWORD: spaarple
-          DATABASE_URL: 'mysql://root:toor@mysql:3306/spaarple?serverVersion=5.7&charset=utf8mb4'
+          DATABASE_URL: 'mysql://root:toor@db:3306/spaarple?serverVersion=5.7.43&charset=utf8mb4'
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -49,7 +49,7 @@ jobs:
 
       - name: Doctrine schema validate
         env:
-          DATABASE_URL: 'mysql://root:toor@mysql:3306/spaarple?serverVersion=5.7&charset=utf8mb4'
+          DATABASE_URL: 'mysql://root:toor@db:3306/spaarple?serverVersion=5.7.43&charset=utf8mb4'
         run: |
           php bin/console doctrine:database:drop --force
           php bin/console doctrine:database:create
