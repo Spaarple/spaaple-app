@@ -21,6 +21,10 @@ module.exports = {
       current: "currentColor",
       white: "#FFFFFF",
       black: "#000000",
+      warning: "#FAA307",
+      danger: "#EF233C",
+      success: "#4C956C",
+      info: "#83C5BE",
       darkness: {
         200: "#E3E3E5",
         400: "#D0D0D0",
