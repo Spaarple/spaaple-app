@@ -6,77 +6,52 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: toor
+          MYSQL_DATABASE: spaarple
+          MYSQL_USER: spaarple
+          MYSQL_PASSWORD: spaarple
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Install dependencies (PHP, Composer)
-        run: |
-          sudo apt-get update && sudo apt-get install -y curl git libzip-dev libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev
-          curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: exif, mysqli, pdo, pdo_mysql, zip, gd
+          tools: composer:v2
 
-      - name: Install PHP extensions
-        run: |
-          docker-php-ext-install exif mysqli pdo pdo_mysql zip gd  # Consider containerizing this step if necessary
+      - name: Install dependencies
+        run: composer install -o
 
-      - name: Install project dependencies
-        run: composer install --prefer-dist --no-interaction
-
-      - name: Cache vendor directory
-        uses: actions/cache@v3
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
-  validation:
-    runs-on: ubuntu-latest
-
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Download security-checker
+      - name: Security checker
         run: |
-          curl -L "https://github.com/fabpot/local-php-security-checker/releases/download/v${{ env.PHP_CHECKER_VERSION }}/local-php-security-checker_${{ env.PHP_CHECKER_VERSION }}_linux_amd64" -o security-checker
+          curl -o /tmp/security_checker -L "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.5/local-php-security-checker_2.0.5_linux_amd64"
+          mv /tmp/security_checker /usr/bin/local-php-security-checker
+          chmod +x /usr/bin/local-php-security-checker
+          local-php-security-checker --path=./composer.lock
 
-      - name: Make security-checker executable
-        run: chmod +x security-checker
-
-      - name: Run security checks
-        run: ./security-checker --path=./composer.lock
-        env:
-          PHP_CHECKER_VERSION: 2.0.5  # Replace with your desired version
-
-      - name: Setup MySQL service
-        uses: actions/docker-compose@v2
-        with:
-          docker-compose.yml: .docker-compose.yml  # Adjust the path if necessary
-          up-args: mysql
-
-      - name: Install database dependencies (within container)
+      - name: Doctrine schema validate
         run: |
-          docker-compose exec mysql apt-get update && docker-compose exec mysql apt-get install -y git libzip-dev libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev
+          php bin/console doctrine:database:drop --force
+          php bin/console doctrine:database:create
+          php bin/console doctrine:migration:migrate --no-interaction
+          php bin/console doctrine:schema:validate
 
-      - name: Install project dependencies (within container)
-        run: |
-          docker-compose exec php composer install --prefer-dist --no-interaction
-
-      - name: Prepare database (within container)
-        run: |
-          docker-compose exec php php bin/console doctrine:database:drop --force
-          docker-compose exec php php bin/console doctrine:database:create
-          docker-compose exec php php bin/console doctrine:migration:migrate --no-interaction
-
-      - name: Validate database schema (within container)
-        run: docker-compose exec php php bin/console doctrine:schema:validate
-
-  coding-standards:
-    runs-on: ubuntu-latest
-
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Run Twig linting
+      - name: Twig lint
         run: php bin/console lint:twig ./templates
