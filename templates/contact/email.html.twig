@@ -1,0 +1,13 @@
+<h1>Nous avons reçu une nouvelle demande de contact via notre site web. Voici les
+    informations fournies par l'utilisateur.
+</h1>
+
+<ul>
+    <li>Nom, Prénom, Entreprise: <b>{{ who }}</b></li>
+    <li>Adresse e-mail: <b>{{ contactEmail }}</b></li>
+    <li>Message: {{ message }}</li>
+</ul>
+
+<a href="{{ path('app_login') }}">Retrouvez les demandes de contact directement dans votre compte.</a>
+
+
