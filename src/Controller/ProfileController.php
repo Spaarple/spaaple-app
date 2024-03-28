@@ -6,6 +6,7 @@ use App\Entity\User\AbstractUser;
 use App\Form\EditPasswordType;
 use App\Form\EditProfileType;
 use App\Form\Model\ChangePassword;
+use App\Repository\EstimateRepository;
 use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -86,6 +87,17 @@ class ProfileController extends AbstractController
 
         return $this->render('profile/change_password.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/your-estimate', name: '_your_estimate')]
+    public function yourEstimate(EstimateRepository $estimateRepository, #[CurrentUser] AbstractUser $user): Response
+    {
+        $estimates = $estimateRepository->findBy(['userClient' => $user]);
+
+        return $this->render('profile/your_estimate.html.twig', [
+            'estimates' => $estimates,
         ]);
     }
 }
