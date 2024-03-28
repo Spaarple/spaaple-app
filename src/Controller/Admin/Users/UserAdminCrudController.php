@@ -6,6 +6,8 @@ namespace App\Controller\Admin\Users;
 
 use App\Entity\User\UserAdministrator;
 use App\Enum\Role;
+use App\Helper\GeneratePasswordHelper;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -13,11 +15,21 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_ADMINISTRATOR')]
 class UserAdminCrudController extends AbstractCrudController
 {
+
+    /**
+     * @param GeneratePasswordHelper $generatePasswordHelper
+     */
+    public function __construct(
+        private readonly GeneratePasswordHelper $generatePasswordHelper,
+    ) {
+    }
+
     /**
      * @return string
      */
@@ -68,5 +80,23 @@ class UserAdminCrudController extends AbstractCrudController
                     ucfirst(Role::ROLE_ADMINISTRATOR->value) => Role::ROLE_ADMINISTRATOR->name,
                 ])->onlyOnDetail(),
         ];
+    }
+
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param mixed $entityInstance
+     * @return void
+     * @throws TransportExceptionInterface
+     */
+    public function persistEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    {
+        /** @var UserAdministrator $entityInstance */
+        if (!$entityInstance instanceof UserAdministrator) {
+            return;
+        }
+
+        $this->generatePasswordHelper->createAccount($entityInstance);
+
+        parent::persistEntity($entityManager, $entityInstance);
     }
 }
