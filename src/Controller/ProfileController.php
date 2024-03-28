@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User\AbstractUser;
+use App\Form\EditPasswordType;
 use App\Form\EditProfileType;
+use App\Form\Model\ChangePassword;
 use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -49,6 +52,39 @@ class ProfileController extends AbstractController
         }
 
         return $this->render('profile/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param UserPasswordHasherInterface $passwordHasher
+     * @return Response
+     */
+    #[IsGranted('ROLE_USER')]
+    #[Route('/change-password', name: '_change_password')]
+    public function changePassword(Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        $changePasswordModel = new ChangePassword();
+        $form = $this->createForm(EditPasswordType::class, $changePasswordModel);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var AbstractUser $user */
+            $user = $this->getUser();
+
+            $password = $form->get('newPassword')->getData();
+            $user->setPassword($passwordHasher->hashPassword($user, $password));
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            $this->alertService->success('Votre mot de passe a été mis à jour.');
+
+            return $this->redirectToRoute('app_profile_index');
+        }
+
+        return $this->render('profile/change_password.html.twig', [
             'form' => $form->createView(),
         ]);
     }

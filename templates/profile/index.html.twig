@@ -3,34 +3,42 @@
 {% block title %}Spaarple - Profil{% endblock %}
 
 {% block body %}
-    <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900 m-20">
+    <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900 sm:m-20 mt-20">
         <div class="mb-4 col-span-full xl:mb-2">
-            <h1 class="lg:text-display-1xl  text-display-md font-semibold">Mon compte</h1>
-        </div>
-            <div class="col-span-full xl:col-auto">
-                <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                    <h3 class="mb-4 text-xl font-semibold dark:text-white">Cliquez sur l'une des options ci-dessous pour accéder rapidement à ce que vous cherchez.</h3>
-                    <div class="col-span-6 sm:col-full space-y-2">
-                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
-                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                            Consulter mes estimations.
-                        </button>
-                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
-                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                            Effectuer une nouvelle estimation.
-                        </button>
-                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-info text-body-sm font-semibold text-white bg-info
-                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                            Nous contactez.
-                        </button>
-                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-danger text-body-sm font-semibold text-white bg-danger
-                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                           Supprimer mon compte.
-                        </button>
-                    </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <h1 class="lg:text-display-1xl text-display-md font-semibold mb-4 sm:mb-0">Mon compte</h1>
+                <div class="flex justify-around space-x-4">
+                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-info text-body-sm font-semibold text-white bg-info
+            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Nous contactez
+                    </button>
+                    <a href="{{ path('app_logout') }}" class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-700 text-body-sm font-semibold text-white bg-neutral-700
+            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Se déconnecter
+                    </a>
                 </div>
             </div>
-        <div class="col-span-2">
+        </div>
+        <div class="col-span-full xl:col-auto order-2 sm:order-1">
+            <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                <h3 class="mb-4 text-xl font-semibold dark:text-white">Cliquez sur l'une des options ci-dessous pour accéder rapidement à ce que vous cherchez.</h3>
+                <div class="col-span-6 sm:col-full space-y-2">
+                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Consulter mes estimations
+                    </button>
+                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Effectuer une nouvelle estimation
+                    </button>
+                </div>
+            </div>
+            <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-danger text-body-sm font-semibold text-white bg-danger
+                    py-4 pl-5 pr-4 mb-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                Supprimer mon compte.
+            </button>
+        </div>
+        <div class="col-span-2 order-1">
             <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                 <h3 class="mb-4 text-xl font-semibold dark:text-white">
                     Informations générales
@@ -43,7 +51,7 @@
                         {{ form_row(form.email) }}
                     </div>
                     <div class="col-span-6 sm:col-full">
-                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-success text-body-sm font-semibold text-white bg-neutral-900
                                 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
                             Modifier les informations.
                         </button>
@@ -51,31 +59,7 @@
                     {{ form_end(form) }}
                 </div>
             </div>
-            <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                <h3 class="mb-4 text-xl font-semibold dark:text-white">Password information</h3>
-                <form action="#">
-                    <div class="grid grid-cols-6 gap-6">
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current password</label>
-                            <input type="text" name="current-password" id="current-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="••••••••" required="">
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New password</label>
-                            <input data-popover-target="popover-password" data-popover-placement="bottom" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="">
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                            <input type="text" name="confirm-password" id="confirm-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="••••••••" required="">
-                        </div>
-                        <div class="col-span-6 sm:col-full">
-                            <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
-                                py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                                Changer le mot de passe.
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            {{ render(controller('App\\Controller\\ProfileController::changePassword')) }}
         </div>
     </div>
 
