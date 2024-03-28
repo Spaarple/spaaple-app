@@ -42,8 +42,8 @@ jobs:
       - name: Security checker
         run: |
           curl -o /tmp/security_checker -L "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.5/local-php-security-checker_2.0.5_linux_amd64"
-          mv /tmp/security_checker /usr/bin/local-php-security-checker
-          chmod +x /usr/bin/local-php-security-checker
+          sudo mv /tmp/security_checker /usr/local/bin/local-php-security-checker
+          sudo chmod +x /usr/local/bin/local-php-security-checker
           local-php-security-checker --path=./composer.lock
 
       - name: Doctrine schema validate
