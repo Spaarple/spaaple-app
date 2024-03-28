@@ -36,6 +36,7 @@ class UserClientCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->showEntityActionsInlined()
             ->setEntityLabelInSingular('Client')
             ->setEntityLabelInPlural('Clients');
     }
@@ -70,9 +71,9 @@ class UserClientCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('firstName', 'Prénom'),
             EmailField::new('email', 'Email'),
             TextField::new('lastName', 'Nom'),
+            TextField::new('firstName', 'Prénom'),
             ChoiceField::new('roles', 'Roles')
                 ->allowMultipleChoices()
                 ->setChoices(Role::asArrayInverted()),

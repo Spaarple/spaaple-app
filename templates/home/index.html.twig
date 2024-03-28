@@ -16,7 +16,7 @@
                         Ensemble, donnons vie à vos projets web.
                     </h1>
                     <a href="{{ path('app_estimate_index') }}"
-                       class="text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                       class="transform hover:scale-110 transition-transform duration-200 text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
                         Transformez votre vision en réalité.
                     </a>
                 </div>
@@ -384,4 +384,7 @@
             </div>
         </div>
         </div>
+
+    {{ render(controller('App\\Controller\\ContactController::index')) }}
+
 {% endblock %}

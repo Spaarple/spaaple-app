@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -36,6 +37,7 @@ class UserCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->showEntityActionsInlined()
             ->setEntityLabelInSingular('Utilisateur')
             ->setEntityLabelInPlural('Utilisateurs');
     }
@@ -72,11 +74,12 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             EmailField::new('email', 'Email'),
-            TextField::new('firstName', 'Prénom'),
             TextField::new('lastName', 'Nom'),
+            TextField::new('firstName', 'Prénom'),
             ChoiceField::new('roles', 'Roles')
                 ->allowMultipleChoices()
                 ->setChoices(Role::asArrayInverted()),
+            BooleanField::new('isBlocked', 'Bloquer l\'utilisateur'),
         ];
     }
 }
