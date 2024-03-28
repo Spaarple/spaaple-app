@@ -10,6 +10,7 @@ use App\Enum\NumberPage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -59,7 +60,29 @@ class EstimateYoursSiteType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
-            ]);
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description de votre projet',
+                'attr' => [
+                    'placeholder' => 'Nous sommes impatients de découvrir les détails de votre projet !',
+                ],
+                'required' => true,
+            ])
+            ->add('descriptionPage', TextareaType::class, [
+                'label' => 'Listez ici les pages que vous souhaitez voir sur votre site web.',
+                'attr' => [
+                    'placeholder' => 'Accueil, À propos, Services, Galerie, Contact, etc.',
+                ],
+                'required' => true,
+            ])
+            ->add('reference', TextareaType::class, [
+                'label' => 'Donnez-nous des références de sites que vous aimez',
+                'attr' => [
+                    'placeholder' => 'Partagez avec nous les sites web que vous appréciez pour leur design, leur fonctionnalité ou leur contenu.',
+                ],
+                'required' => true,
+            ])
+        ;
     }
 
     /**
