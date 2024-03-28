@@ -3,11 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\Users\UserCrudController;
+use App\Entity\Contact;
 use App\Entity\Estimate;
 use App\Entity\EstimateData;
 use App\Entity\User\AbstractUser;
 use App\Entity\User\UserAdministrator;
 use App\Entity\User\UserClient;
+use App\Repository\ContactRepository;
 use App\Repository\EstimateRepository;
 use App\Repository\User\AbstractUserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -30,10 +32,12 @@ class DashboardController extends AbstractDashboardController
     /**
      * @param AbstractUserRepository $userRepository
      * @param EstimateRepository $estimateRepository
+     * @param ContactRepository $contactRepository
      */
     public function __construct(
         private readonly AbstractUserRepository $userRepository,
         private readonly EstimateRepository $estimateRepository,
+        private readonly ContactRepository $contactRepository,
     )
     {}
 
@@ -92,6 +96,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Estimations Clients', null, Estimate::class),
         ])->setBadge($this->estimateRepository->count([]), 'primary');
 
+        yield MenuItem::linkToCrud('Contacts', 'fa fa-envelope', Contact::class)
+            ->setBadge($this->contactRepository->count([]), 'primary');
 
         yield MenuItem::section('Paramètres du compte');
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
