@@ -48,6 +48,8 @@ jobs:
           local-php-security-checker --path=./composer.lock
 
       - name: Doctrine schema validate
+        env:
+          DATABASE_URL: ${{ services.mysql.env.DATABASE_URL }}
         run: |
           php bin/console doctrine:database:drop --force
           php bin/console doctrine:database:create
