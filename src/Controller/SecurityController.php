@@ -21,11 +21,11 @@ class SecurityController extends AbstractController
         $user = $this->getUser()?->getRoles()[0];
 
         if ($user === Role::ROLE_ADMINISTRATOR->name) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('admin');
         }
 
         if ($this->getUser()?->getRoles()[0] === Role::ROLE_CLIENT->name) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_home_index');
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
