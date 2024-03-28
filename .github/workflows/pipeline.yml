@@ -49,7 +49,7 @@ jobs:
 
       - name: Doctrine schema validate
         env:
-          DATABASE_URL: ${{ services.mysql.env.DATABASE_URL }}
+          DATABASE_URL: 'mysql://root:toor@mysql:3306/spaarple?serverVersion=5.7&charset=utf8mb4'
         run: |
           php bin/console doctrine:database:drop --force
           php bin/console doctrine:database:create
