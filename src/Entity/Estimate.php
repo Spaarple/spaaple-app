@@ -39,6 +39,15 @@ class Estimate
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $result = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $descriptionPage = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $reference = null;
+
     /**
      * @return Uuid|null
      */
@@ -157,6 +166,63 @@ class Estimate
     public function setResult(int $result): static
     {
         $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescriptionPage(): ?string
+    {
+        return $this->descriptionPage;
+    }
+
+    /**
+     * @param string $descriptionPage
+     * @return $this
+     */
+    public function setDescriptionPage(string $descriptionPage): static
+    {
+        $this->descriptionPage = $descriptionPage;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param string $reference
+     * @return $this
+     */
+    public function setReference(string $reference): static
+    {
+        $this->reference = $reference;
 
         return $this;
     }

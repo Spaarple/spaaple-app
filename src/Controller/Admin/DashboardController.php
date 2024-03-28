@@ -8,7 +8,9 @@ use App\Entity\EstimateData;
 use App\Entity\User\AbstractUser;
 use App\Entity\User\UserAdministrator;
 use App\Entity\User\UserClient;
+use App\Repository\EstimateRepository;
 use App\Repository\User\AbstractUserRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
@@ -27,8 +29,12 @@ class DashboardController extends AbstractDashboardController
 {
     /**
      * @param AbstractUserRepository $userRepository
+     * @param EstimateRepository $estimateRepository
      */
-    public function __construct(private readonly AbstractUserRepository $userRepository)
+    public function __construct(
+        private readonly AbstractUserRepository $userRepository,
+        private readonly EstimateRepository $estimateRepository,
+    )
     {}
 
     /**
@@ -55,7 +61,18 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('Spaarple')
             ->setTranslationDomain('admin')
+            ->setFaviconPath('images/icons.svg')
             ->disableUrlSignatures();
+    }
+
+    /**
+     * @return Assets
+     */
+    public function configureAssets(): Assets
+    {
+        return parent::configureAssets()
+            ->addWebpackEncoreEntry('app')
+            ;
     }
 
     /**
@@ -69,10 +86,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Administrateurs', null, UserAdministrator::class),
             MenuItem::linkToCrud('Clients', null, UserClient::class),
         ])->setBadge($this->userRepository->count([]), 'primary');
+
         yield MenuItem::subMenu('Estimations', 'fa-solid fa-coins')->setSubItems([
             MenuItem::linkToCrud('Données des estimations', null, EstimateData::class),
             MenuItem::linkToCrud('Estimations Clients', null, Estimate::class),
-        ]);
+        ])->setBadge($this->estimateRepository->count([]), 'primary');
 
 
         yield MenuItem::section('Paramètres du compte');

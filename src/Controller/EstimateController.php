@@ -49,7 +49,7 @@ class EstimateController extends AbstractController
 
             $this->alertService->success('Estimation enregistrée avec succès !');
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_home_index');
         }
 
         return $this->render('estimate/index.html.twig', [
