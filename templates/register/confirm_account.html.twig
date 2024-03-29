@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation{% endblock %}
+
+{% block body %}
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-12 grid-cols-1 flex-col md:pt-32 pt-16 lg:pb-48 md:pb-40 pb-20 justify-between items-center text-center">
+                <div class="lg:col-span-1"></div>
+                <div class="lg:col-span-10 flex flex-col items-center">
+                    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                        Confirmation de votre compte
+                    </h2>
+                    <p class="md:text-body-xl text-body-lg font-medium pb-4">
+                        Bravo ! Votre compte a bien été créé. Vous pouvez désormais vous connecter.
+                    </p>
+                    <div>
+                        <a href="{{ path('app_login') }}" class="hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                            Se connecter
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-1"></div>
+            </div>
+        </div>
+{% endblock %}

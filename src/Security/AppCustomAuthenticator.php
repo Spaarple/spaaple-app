@@ -2,7 +2,9 @@
 
 namespace App\Security;
 
+use App\Entity\User\AbstractUser;
 use App\Enum\Role;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,8 +27,12 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
+     * @param EntityManagerInterface $entityManager
      */
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
+    public function __construct(
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly EntityManagerInterface $entityManager,
+    )
     {
     }
 
@@ -41,10 +47,16 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
         return new Passport(
-            new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
+            new UserBadge((string) $email, function ($userIdentifier) {
+                return $this->entityManager->getRepository(AbstractUser::class)->findOneBy([
+                    'email' => $userIdentifier,
+                    'isVerified' => true,
+                    'isBlocked' => false,
+                ]);
+            }),
+            new PasswordCredentials((string) $request->request->get('password', '')),
             [
-                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+                new CsrfTokenBadge('authenticate', (string) $request->request->get('_csrf_token')),
                 new RememberMeBadge(),
             ]
         );
