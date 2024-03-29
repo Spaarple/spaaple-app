@@ -47,6 +47,10 @@
                                         <td class="px-6 py-4">{{ estimate.page.value }}</td>
                                         <td class="px-6 py-4">{{ estimate.descriptionPage }}</td>
                                     </tr>
+                                    {% else %}
+                                    <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <td class="text-center px-6 py-4" colspan="7">Aucune estimation</td>
+                                    </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
