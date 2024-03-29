@@ -22,8 +22,14 @@ class EstimateController extends AbstractController
 {
     /**
      * @param AlertServiceInterface $alertService
+     * @param ParameterBagInterface $parameterBag
+     * @param MailerInterface $mailer
      */
-    public function __construct(private readonly AlertServiceInterface $alertService)
+    public function __construct(
+        private readonly AlertServiceInterface $alertService,
+        private readonly ParameterBagInterface $parameterBag,
+        private readonly MailerInterface $mailer,
+    )
     {
     }
 
@@ -32,6 +38,7 @@ class EstimateController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @param UserClient|null $userClient
      * @return Response
+     * @throws TransportExceptionInterface
      */
     #[Route('/', name: '_index')]
     public function index(
@@ -45,13 +52,18 @@ class EstimateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $estimate = $form->getData();
 
+            $data = $request->request->all();
+            $email = $data['estimate_yours_site']['contactEmail'];
+
             $userClient ? $estimate->setUserClient($userClient) : $estimate->setUserClient(null);
             $estimate->setResult(1000);
 
             $entityManager->persist($estimate);
             $entityManager->flush();
 
-            $request->getSession()->set('estimate', $estimate);
+            if ($email) {
+                $this->sendMailToEstimate($request, $estimate);
+            }
 
             $this->alertService->success('Estimation enregistrée avec succès !');
 
@@ -65,44 +77,30 @@ class EstimateController extends AbstractController
 
     /**
      * @param Request $request
-     * @param AlertServiceInterface $alertService
-     * @param MailerInterface $mailer
-     * @param ParameterBagInterface $parameterBag
-     * @return Response
+     * @param $estimate
+     * @return void
      * @throws TransportExceptionInterface
      */
-    #[Route('/contact-estimate', name: '_contact_estimate')]
-    public function testContactEstimate(
-        Request $request,
-        AlertServiceInterface $alertService,
-        MailerInterface $mailer,
-        ParameterBagInterface $parameterBag
-    ): Response {
+    private function sendMailToEstimate(Request $request, $estimate): void
+    {
+        $data = $request->request->all();
 
-        $estimate = $request->getSession()->get('estimate');
-dd($estimate);
         $users = [
-            'user' => $request->get('email'),
-            'spaarple' => $parameterBag->get('mail.support'),
+            $data['estimate_yours_site']['contactEmail'],
+            $this->parameterBag->get('mail.support'),
         ];
-
 
         foreach ($users as $user) {
             $emailContact = (new TemplatedEmail())
-                ->from(new Address($parameterBag->get('mail.support'), 'Spaarple'))
+                ->from(new Address($this->parameterBag->get('mail.support'), 'Spaarple'))
                 ->to($user)
                 ->subject('Votre Estimation')
-                ->htmlTemplate('contact/email.html.twig')
+                ->htmlTemplate('estimate/email/email.html.twig')
                 ->context([
-                    'estimate' => '',
+                    'estimate' => $estimate,
                 ]);
 
-            $mailer->send($emailContact);
+            $this->mailer->send($emailContact);
         }
-
-        $alertService->success('Estimation envoyé !');
-
-        return $this->redirectToRoute('app_home_index');
     }
-
 }

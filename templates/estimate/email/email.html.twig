@@ -1,0 +1,21 @@
+<h1>Bonjour,</h1>
+<p>Voici le détail de l'estimation</p>
+
+{% for detail in estimate %}
+    <ul>
+        <li>{{ detail.description }}</li>
+        <li>{{ detail.reference }}</li>
+        <li>{{ detail.cms.value }}</li>
+        <li>{{ detail.complexity.value }}</li>
+        <li>
+            {% for integrate in detail.integration %}
+                {{ integrate }},
+            {% endfor %}
+        </li>
+        <li>{{ detail.page.value }}</li>
+        <li>{{ detail.descriptionPage }}</li>
+    </ul>
+{% endfor %}
+
+
+
