@@ -1,7 +1,7 @@
-<h1>Hello! {{ you }}</h1>
+<h1>Bienvenue ! {{ user.lastname }} {{ user.firstname }}</h1>
 
-<p>You account has been created, please Sign In and change your password quickly</p>
-<p>Your password : <b>{{ generatePassword }}</b></p>
+<p>Afin d'avoir accès a notre application, veuillez confirmer votre adresse mail
+en cliquant que le bouton ci-dessous</p>
 
-<a href="{{ path('app_login') }}">Login here</a>
+<a href="{{ path('app_register_confirm_account', {'id':  user.id }) }}">Vérifier mon compte</a>
 
