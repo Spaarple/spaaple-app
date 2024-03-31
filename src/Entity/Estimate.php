@@ -36,8 +36,8 @@ class Estimate
     #[ORM\Column(type: Types::STRING, length: 255, enumType: Complexity::class)]
     private Complexity $complexity;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $result = null;
+    #[ORM\Column(type: Types::JSON)]
+    private ?array $result = [];
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -152,18 +152,18 @@ class Estimate
     }
 
     /**
-     * @return int|null
+     * @return array|null
      */
-    public function getResult(): ?int
+    public function getResult(): ?array
     {
         return $this->result;
     }
 
     /**
-     * @param int $result
+     * @param array $result
      * @return $this
      */
-    public function setResult(int $result): static
+    public function setResult(array $result): static
     {
         $this->result = $result;
 
