@@ -9,6 +9,7 @@ use App\Enum\Integration;
 use App\Enum\NumberPage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,6 @@ class EstimateYoursSiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
             ->add('integration', EnumType::class, [
                 'class' => Integration::class,
                 'label' => 'Quelles intégrations souhaitez-vous ? (Plusieurs choix possibles)',
@@ -81,6 +81,14 @@ class EstimateYoursSiteType extends AbstractType
                     'placeholder' => 'Partagez avec nous les sites web que vous appréciez pour leur design, leur fonctionnalité ou leur contenu.',
                 ],
                 'required' => true,
+            ])
+            ->add('contactEmail', EmailType::class, [
+                'label' => 'Votre adresse email',
+                'required' => false,
+                'mapped' => false,
+                'attr' => [
+                    'placeholder' => 'Recevoir votre estimation par email',
+                ],
             ])
         ;
     }

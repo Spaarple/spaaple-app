@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
+ {% import "estimate/modal.html.twig" as modal %}
+
 {% block title %}Spaarple - Estimation d'application web{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('modal') }}
+{% endblock %}
 
 {% block body %}
     <div class="grid grid-cols-6 gap-4">
@@ -28,15 +35,27 @@
                     {{ form_row(form.descriptionPage) }}
 
                     {{ form_row(form.reference) }}
+
+                    {{ modal.modal_estimate(form.contactEmail, 'app_register_index') }}
+
                     <div class="flex flex-col items-center mb-20">
-                        <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') is same as true %}
+                            <button type="submit" class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
                             py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                            Estimer votre site
-                        </button>
+                                Estimer votre site
+                            </button>
+                        {% else %}
+                            <a data-modal-target="crud-modal"
+                               data-modal-toggle="crud-modal" class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                               py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                                Estimer votre site
+                            </a>
+                        {% endif %}
                     </div>
                     {{ form_end(form) }}
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
