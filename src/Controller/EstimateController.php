@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Estimate;
 use App\Entity\User\UserClient;
+use App\Enum\CMS;
+use App\Enum\Complexity;
+use App\Enum\NumberPage;
 use App\Form\EstimateYoursSiteType;
 use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -52,14 +56,24 @@ class EstimateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $estimate = $form->getData();
 
+            // Si Utilisateur est connecté push directement l'estimation.
+            //Sinon ouvrir la modal et lui demande son email ou de s'enregistrer
+            if ($userClient) {
+                $estimate->setResult($this->getResultEstimate($estimate));
+
+                $entityManager->persist($estimate);
+                $entityManager->flush();
+
+                $this->alertService->success('Estimation enregistrée avec succès !');
+
+                return $this->redirectToRoute('app_home_index');
+            }
+
+            $this->getResultEstimate($estimate);
+
+            $estimate->setUserClient(null);
             $data = $request->request->all();
             $email = $data['estimate_yours_site']['contactEmail'];
-
-            $userClient ? $estimate->setUserClient($userClient) : $estimate->setUserClient(null);
-            $estimate->setResult(1000);
-
-            $entityManager->persist($estimate);
-            $entityManager->flush();
 
             if ($email) {
                 $this->sendMailToEstimate($request, $estimate);
@@ -77,11 +91,11 @@ class EstimateController extends AbstractController
 
     /**
      * @param Request $request
-     * @param $estimate
+     * @param Estimate $estimate
      * @return void
      * @throws TransportExceptionInterface
      */
-    private function sendMailToEstimate(Request $request, $estimate): void
+    private function sendMailToEstimate(Request $request, Estimate $estimate): void
     {
         $data = $request->request->all();
 
@@ -103,4 +117,54 @@ class EstimateController extends AbstractController
             $this->mailer->send($emailContact);
         }
     }
+
+    /**
+     * @param $estimateData
+     * @return array
+     */
+    private function getResultEstimate($estimateData): array
+    {
+        $cmsEstimations = [
+            CMS::SHOPIFY->name => [300, 500],
+            CMS::WORDPRESS->name => [500, 1000],
+            CMS::AUCUN->name => [1000, 3000]
+        ];
+
+        $pagesEstimations = [
+            NumberPage::SMALL->name => [200, 400],
+            NumberPage::MEDIUM->name => [400, 800],
+            NumberPage::BIGGEST->name => [1000, 2000]
+        ];
+
+        $complexityEstimations = [
+            Complexity::SIMPLE->name => [500, 1000],
+            Complexity::MIDDLE->name => [1000, 2000],
+            Complexity::HARDCORE->name => [3000, 5000]
+        ];
+
+        $integrationUnitPrice = [100, 200];
+        $cms = $estimateData->getCMS()->name;
+        $page = $estimateData->getPage()->name;
+        $complexity = $estimateData->getComplexity()->name;
+
+        $coutIntegrations = [
+            $integrationUnitPrice[0] * count($estimateData->getIntegration()),
+            $integrationUnitPrice[1] * count($estimateData->getIntegration())
+        ];
+
+        $smallPrice = (
+            $cmsEstimations[$cms][0] +
+            $pagesEstimations[$page][0] +
+            $complexityEstimations[$complexity][0] +
+            $coutIntegrations[0]);
+
+        $bigPrice = (
+            $cmsEstimations[$cms][1] +
+            $pagesEstimations[$page][1] +
+            $complexityEstimations[$complexity][1] +
+            $coutIntegrations[1]);
+
+        return [$smallPrice, $bigPrice];
+    }
 }
+
