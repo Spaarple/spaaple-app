@@ -55,29 +55,17 @@ class EstimateController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $estimate = $form->getData();
+            $estimate->setResult($this->getResultEstimate($estimate));
 
-            // Si Utilisateur est connecté push directement l'estimation.
-            //Sinon ouvrir la modal et lui demande son email ou de s'enregistrer
-            if ($userClient) {
-                $estimate->setResult($this->getResultEstimate($estimate));
-
-                $entityManager->persist($estimate);
-                $entityManager->flush();
-
-                $this->alertService->success('Estimation enregistrée avec succès !');
-
-                return $this->redirectToRoute('app_home_index');
-            }
-
-            $this->getResultEstimate($estimate);
-
-            $estimate->setUserClient(null);
-            $data = $request->request->all();
-            $email = $data['estimate_yours_site']['contactEmail'];
-
-            if ($email) {
+            if (!$userClient) {
+                $estimate->setUserClient(null);
                 $this->sendMailToEstimate($request, $estimate);
+            } else {
+                $estimate->setUserClient($userClient);
             }
+
+            $entityManager->persist($estimate);
+            $entityManager->flush();
 
             $this->alertService->success('Estimation enregistrée avec succès !');
 
