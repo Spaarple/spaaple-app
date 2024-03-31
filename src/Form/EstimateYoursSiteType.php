@@ -25,7 +25,6 @@ class EstimateYoursSiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
             ->add('integration', EnumType::class, [
                 'class' => Integration::class,
                 'label' => 'Quelles intégrations souhaitez-vous ? (Plusieurs choix possibles)',
