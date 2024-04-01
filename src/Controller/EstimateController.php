@@ -97,6 +97,7 @@ class EstimateController extends AbstractController
                 ->from(new Address($this->parameterBag->get('mail.support'), 'Spaarple'))
                 ->to($user)
                 ->subject('Votre Estimation')
+                ->textTemplate('estimate/email/email.txt.twig')
                 ->htmlTemplate('estimate/email/email.html.twig')
                 ->context([
                     'estimate' => $estimate,

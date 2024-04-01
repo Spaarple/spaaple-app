@@ -1,0 +1,12 @@
+Vous avez demandé une réinitialisation de votre mot de passe pour votre compte sur Spaarple.
+Pour procéder à cette réinitialisation, veuillez cliquer sur le bouton ci-dessous :
+
+Le lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+
+{{ url('app_reset_password', {token: resetToken.token}) }} {{ url('app_reset_password', {token: resetToken.token}) }}
+
+Si vous n'avez pas demandé cette réinitialisation ou si vous pensez qu'il s'agit d'une erreur, veuillez ignorer
+cet e-mail et votre mot de passe restera inchangé.
+
+Merci,
+L'équipe de Spaarple
