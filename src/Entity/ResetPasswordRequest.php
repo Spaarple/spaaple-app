@@ -21,8 +21,8 @@ class ResetPasswordRequest implements ResetPasswordRequestInterface
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
     private ?Uuid $id = null;
 
-    #[ORM\ManyToOne(targetEntity: AbstractUser::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: AbstractUser::class, cascade: ["remove"])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private AbstractUser $user;
 
     /**
