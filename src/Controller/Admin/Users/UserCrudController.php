@@ -80,6 +80,7 @@ class UserCrudController extends AbstractCrudController
                 ->allowMultipleChoices()
                 ->setChoices(Role::asArrayInverted()),
             BooleanField::new('isBlocked', 'Bloquer l\'utilisateur'),
+            BooleanField::new('isVerified', 'Vérifier l\'utilisateur'),
         ];
     }
 }
