@@ -8,14 +8,16 @@
             <div class="flex flex-col sm:flex-row justify-between items-center">
                 <h1 class="lg:text-display-1xl text-display-md font-semibold mb-4 sm:mb-0">Mes estimations</h1>
                 <div class="flex justify-around space-x-4">
-                    <a href="{{ path('app_profile_index') }}" class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-700 text-body-sm font-semibold text-white bg-neutral-700
+                    <a href="{{ path('app_profile_index') }}"
+                       class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-700 text-body-sm font-semibold text-white bg-neutral-700
             py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
                         Retour
                     </a>
-                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-info text-body-sm font-semibold text-white bg-info
+                    <a href="{{ path('app_contact_profile_index') }}"
+                       class="transform hover:scale-110 transition-transform duration-200 hover:bg-info text-body-sm font-semibold text-white bg-info
                     py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                        Nous contactez
-                    </button>
+                        Nous contacter
+                    </a>
                 </div>
             </div>
         </div>

@@ -65,6 +65,7 @@ class EstimateYoursSiteType extends AbstractType
                 'label' => 'Description de votre projet',
                 'attr' => [
                     'placeholder' => 'Nous sommes impatients de découvrir les détails de votre projet !',
+                    'rows' => '5',
                 ],
                 'required' => true,
             ])
