@@ -52,7 +52,7 @@ class GeneratePasswordHelper implements GeneratePasswordInterfaceHelper
         $email = (new TemplatedEmail())
             ->from(new Address($this->parameterBag->get('mail.support'), 'Création de votre compte'))
             ->to($entityInstance->getEmail())
-            ->subject('You account has been created the administrator')
+            ->subject('Votre compte a été créé avec succès')
             ->htmlTemplate('register/email/email.html.twig')
             ->context([
                 'you' => sprintf('%s %s', $entityInstance->getFirstName(), $entityInstance->getLastName()),
