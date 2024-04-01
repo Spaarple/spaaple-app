@@ -84,7 +84,7 @@ class RegisterController extends AbstractController
             ->to($user->getEmail())
             ->subject('Confirmer votre compte')
              ->textTemplate('register/email/email.txt.twig')
-             ->htmlTemplate('register/email/email.mjml.twig')
+             ->htmlTemplate('register/email/email.html.twig')
              ->context([
                 'user' => $user,
             ]);

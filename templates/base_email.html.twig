@@ -50,21 +50,13 @@
         gap: 12px;
         margin-bottom: 20px;
     }
+    {% block css_email %}{% endblock %}
 </style>
 
 <div class="header">
-    <h1>Bienvenue chez Spaarple</h1>
+    <h1>{% block title_email %}{% endblock %}</h1>
 </div>
-
-<h1>Bienvenue ! {{ user.lastname }} {{ user.firstname }}</h1>
-
-<p>Afin d'avoir accès a notre application, veuillez confirmer votre adresse mail
-en cliquant que le bouton ci-dessous</p>
-
-<p>Ceci est un mail automatique, merci de ne pas y répondre</p>
-
-<a href="{{ path('app_register_confirm_account', {'id':  user.id }) }}" class="button">Vérifier mon compte</a>
-
+    {% block body_html_email %}{% endblock %}
 <footer class="footer">
     <div class="container">
         <div>

@@ -48,6 +48,7 @@ class ContactController extends AbstractController
                 ->from($contact->getEmail())
                 ->to(new Address($parameterBag->get('mail.support'), 'Spaarple'))
                 ->subject(sprintf('Demande de contact de %s', $contact->getWho()))
+                ->textTemplate('contact/email.txt.twig')
                 ->htmlTemplate('contact/email.html.twig')
                 ->context([
                     'who' => $contact->getWho(),

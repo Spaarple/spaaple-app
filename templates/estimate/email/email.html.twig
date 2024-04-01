@@ -1,19 +1,29 @@
-<h1>Bonjour,</h1>
-<p>Voici le détail de l'estimation</p>
+{% extends 'base_email.html.twig' %}
 
-<ul>
-    <li>{{ estimate.description }}</li>
-    <li>{{ estimate.reference }}</li>
-    <li>{{ estimate.cms.value }}</li>
-    <li>{{ estimate.complexity.value }}</li>
-    <li>
-        {% for integrate in estimate.integration %}
-            {{ integrate.value }},
-        {% endfor %}
-    </li>
-    <li>{{ estimate.page.value }}</li>
-    <li>{{ estimate.descriptionPage }}</li>
-</ul>
+{% block title_email %}Estimation de Site Internet{% endblock %}
 
+{% block css_email %}{% endblock %}
 
+{% block body_html_email %}
+    <p>Bonjour,</p>
+    <p>Voici le détail de l'estimation réalisée</p>
+
+    <ul>
+        <li>{{ estimate.description }}</li>
+        <li>{{ estimate.reference }}</li>
+        <li>{{ estimate.cms.value }}</li>
+        <li>{{ estimate.complexity.value }}</li>
+        <li>
+            {% for integrate in estimate.integration %}
+                {{ integrate.value }},
+            {% endfor %}
+        </li>
+        <li>{{ estimate.page.value }}</li>
+        <li>{{ estimate.descriptionPage }}</li>
+        <li>Votre site est estimé entre: {{ estimate.result[0] }} et {{ estimate.result[1] }} €</li>
+    </ul>
+
+    <p>Merci,</p>
+    <p>L'équipe Spaarple</p>
+{% endblock %}
 
