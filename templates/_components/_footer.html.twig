@@ -5,7 +5,7 @@
                 <h3 class="md:text-display-xl text-display-md font-semibold pb-4">
                     Une idée?
                 </h3>
-                <a href="/"
+                <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
                    class="md:text-display-xl text-display-md font-normal hover:text-primary-100 hover:underline">
                     Discutons-en ↗
                 </a>
@@ -18,15 +18,15 @@
                     </a>
                 </div>
                 <div class="grid md:grid-cols-3 grid-cols-2 md:gap-12 gap-3 md:pl-32">
-                    <a href="#work"
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#work"
                        class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
                         Nos Réalisations
                     </a>
-                    <a href="#services"
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#services"
                        class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
                         Nos Valeurs
                     </a>
-                    <a href="#integration"
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#integration"
                        class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
                         Intégrations
                     </a>
