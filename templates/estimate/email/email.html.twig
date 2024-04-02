@@ -2,28 +2,60 @@
 
 {% block title_email %}Estimation de Site Internet{% endblock %}
 
-{% block css_email %}{% endblock %}
+{% block css_email %}
+{% endblock %}
 
 {% block body_html_email %}
     <p>Bonjour,</p>
     <p>Voici le détail de l'estimation réalisée</p>
 
-    <ul>
-        <li>{{ estimate.description }}</li>
-        <li>{{ estimate.reference }}</li>
-        <li>{{ estimate.cms.value }}</li>
-        <li>{{ estimate.complexity.value }}</li>
-        <li>
-            {% for integrate in estimate.integration %}
-                {{ integrate.value }},
-            {% endfor %}
-        </li>
-        <li>{{ estimate.page.value }}</li>
-        <li>{{ estimate.descriptionPage }}</li>
-        <li>Votre site est estimé entre: {{ estimate.result[0] }} et {{ estimate.result[1] }} €</li>
-    </ul>
+    <table style="border-collapse: collapse; border: 2px solid #D1D5DB; font-family: sans-serif; font-size: 0.8rem; letter-spacing: 1px; background-color: #F9FAFB;">
+        <tbody>
+        <tr style="background-color: #F3F4F6;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Description de votre projet</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">{{ estimate.description }}</td>
+        </tr>
+        <tr style="background-color: #FFFFFF;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Vos référence(s)</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">{{ estimate.reference }}</td>
+        </tr>
+        <tr style="background-color: #F3F4F6;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Solution choisie</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">{{ estimate.cms.value }}</td>
+        </tr>
+        <tr style="background-color: #FFFFFF;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Complexité du site</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">{{ estimate.complexity.value }}</td>
+        </tr>
+        <tr  style="background-color: #F3F4F6;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Vos intégration(s)</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">
+                {% for integrate in estimate.integration %}
+                    {{ integrate.value }},
+                {% endfor %}
+            </td>
+        </tr>
+        <tr style="background-color: #FFFFFF;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Nombre de pages</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">{{ estimate.page.value }}</td>
+        </tr>
+        <tr  style="background-color: #F3F4F6;">
+            <th scope="row" style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">Liste de vos page(s)</th>
+            <td style="border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">{{ estimate.descriptionPage }}</td>
+        </tr>
+        </tbody>
+        <tfoot style="background-color: #DFD8FC;">
+        <tr>
+            <th scope="row" colspan="1" style="text-align: right; border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">
+                Votre site est estimé entre:
+            </th>
+            <td style="font-weight: bold; border: 1px solid #D1D5DB; padding: 8px 10px; color: #111827;">
+                {{ estimate.result[0] }} et {{ estimate.result[1] }} €
+            </td>
+        </tr>
+        </tfoot>
+    </table>
 
     <p>Merci,</p>
     <p>L'équipe Spaarple</p>
 {% endblock %}
-
