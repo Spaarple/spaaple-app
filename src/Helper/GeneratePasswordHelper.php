@@ -15,12 +15,10 @@ class GeneratePasswordHelper implements GeneratePasswordInterfaceHelper
 {
 
     /**
-     * @param UserPasswordHasherInterface $passwordHasher
      * @param MailerInterface $mailer
      * @param ParameterBagInterface $parameterBag
      */
     public function __construct(
-        private readonly UserPasswordHasherInterface $passwordHasher,
         private readonly MailerInterface $mailer,
         private readonly ParameterBagInterface $parameterBag
     ) {
@@ -31,31 +29,26 @@ class GeneratePasswordHelper implements GeneratePasswordInterfaceHelper
      *
      * @return string
      */
-    public static function generatePassword(int $length): string
+    public function generatePassword(int $length): string
     {
         return mb_substr(sha1((string) time()), 0, $length);
     }
 
     /**
      * @param $entityInstance
+     * @param string $generatePassword
      * @return void
      * @throws TransportExceptionInterface
      */
-    public function createAccount($entityInstance): void
+    public function sendMailAdmin($entityInstance, string $generatePassword): void
     {
-        $generatePassword = self::generatePassword(10);
-
-        $entityInstance->setPassword(
-            $this->passwordHasher->hashPassword($entityInstance, $generatePassword)
-        );
-
         $email = (new TemplatedEmail())
             ->from(new Address($this->parameterBag->get('mail.support'), 'Création de votre compte'))
             ->to($entityInstance->getEmail())
             ->subject('Votre compte a été créé avec succès')
-            ->htmlTemplate('register/email/email.html.twig')
+            ->htmlTemplate('register/email/email_admin.html.twig')
             ->context([
-                'you' => sprintf('%s %s', $entityInstance->getFirstName(), $entityInstance->getLastName()),
+                'you' => $entityInstance,
                 'generatePassword' => $generatePassword,
             ]);
 

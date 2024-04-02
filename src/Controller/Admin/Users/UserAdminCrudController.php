@@ -17,6 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_ADMINISTRATOR')]
@@ -25,9 +26,12 @@ class UserAdminCrudController extends AbstractCrudController
 
     /**
      * @param GeneratePasswordHelper $generatePasswordHelper
+     * @param UserPasswordHasherInterface $passwordHasher
      */
     public function __construct(
         private readonly GeneratePasswordHelper $generatePasswordHelper,
+        private readonly UserPasswordHasherInterface $passwordHasher,
+
     ) {
     }
 
@@ -98,8 +102,12 @@ class UserAdminCrudController extends AbstractCrudController
             return;
         }
 
-        $this->generatePasswordHelper->createAccount($entityInstance);
+        $generatePassword = $this->generatePasswordHelper->generatePassword(10);
+
+        $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $generatePassword));
 
         parent::persistEntity($entityManager, $entityInstance);
+
+        $this->generatePasswordHelper->sendMailAdmin($entityInstance, $generatePassword);
     }
 }
