@@ -31,7 +31,7 @@ class ContactType extends AbstractType
                 ->add('who', TextType::class, [
                     'label' => 'Nom Prénom, Société ou Association',
                     'attr' => [
-                        'placeholder' => 'Nom Prénom, Société ou Association',
+                        'placeholder' => 'Nom, Prénom, Société ou Association',
                     ],
                     'required' => true,
                 ])
