@@ -6,6 +6,7 @@ namespace App\Entity\User;
 
 use App\Enum\Role;
 use App\Repository\User\AbstractUserRepository;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -63,7 +64,10 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     private ?bool $isVerified = false;
 
     public function __construct()
-    {}
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
+    }
 
     /**
      * @return Uuid|null
