@@ -12,7 +12,6 @@
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.1",
         "easycorp/easyadmin-bundle": "^4.9",
-        "gedmo/doctrine-extensions": "^3.14",
         "php-flasher/flasher-notyf-symfony": "^1.15",
         "php-flasher/flasher-symfony": "^1.15",
         "phpdocumentor/reflection-docblock": "^5.3",

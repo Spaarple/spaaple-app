@@ -6,10 +6,10 @@ namespace App\Entity\User;
 
 use App\Enum\Role;
 use App\Repository\User\AbstractUserRepository;
+use App\Traits\TimestampableTrait;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -31,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    use TimestampableEntity;
+    use TimestampableTrait;
 
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
