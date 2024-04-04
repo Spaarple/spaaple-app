@@ -8,6 +8,7 @@ use App\Form\EditProfileType;
 use App\Form\Model\ChangePassword;
 use App\Repository\EstimateRepository;
 use App\Service\AlertServiceInterface;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,6 +45,8 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setUpdatedAt(new  DateTime());
+
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
@@ -73,6 +76,7 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var AbstractUser $user */
             $user = $this->getUser();
+            $user->setUpdatedAt(new  DateTime());
 
             $password = $form->get('newPassword')->getData();
             $user->setPassword($passwordHasher->hashPassword($user, $password));
