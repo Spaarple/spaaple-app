@@ -1,0 +1,26 @@
+{% extends 'base_email.html.twig' %}
+
+{% block title_email %}Réinitialisation de mot de passe{% endblock %}
+
+{% block css_email %}{% endblock %}
+
+{% block body_html_email %}
+    <p>Vous avez demandé une réinitialisation de votre mot de passe pour votre compte sur Spaarple.
+        Pour procéder à cette réinitialisation, veuillez cliquer sur le bouton ci-dessous :
+    </p>
+
+    <p>Le lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}" class="button">
+        Réinitialiser mon mot de passe
+    </a>
+
+    <p>Si vous n'avez pas demandé cette réinitialisation ou si vous pensez qu'il s'agit d'une erreur, veuillez ignorer
+        cet e-mail et votre mot de passe restera inchangé.
+    </p>
+
+    <p>Merci,</p>
+    <p>L'équipe Spaarple</p>
+{% endblock %}
+
+

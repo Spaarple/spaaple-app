@@ -1,0 +1,26 @@
+{% block choice_widget_expanded %}
+    <div class="flex flex-wrap">
+        {% for child in form %}
+            <div class="flex items-center mb-2 space-x-2 justify-center">
+                <input type="{{ form.vars.multiple ? 'checkbox' : 'radio'}}"
+                       id="{{ child.vars.id }}"
+                       name="{{ child.vars.full_name }}"
+                       value="{{ child.vars.value }}"
+                       class="hidden peer">
+                <label for="{{ child.vars.id }}"
+                       class="flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2
+               border-gray-200 rounded-lg cursor-pointer
+               dark:hover:text-gray-300
+               dark:border-gray-700
+               peer-checked:bg-darkness-200 dark:peer-checked:bg-darkness-200
+               peer-checked:border-darkness-500 hover:text-gray-600 dark:peer-checked:text-gray-300
+               peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800
+               dark:hover:bg-gray-700">
+                    <div class="block">
+                        <div class="w-full text-lg font-semibold">{{ child.vars.label }}</div>
+                    </div>
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock choice_widget_expanded %}

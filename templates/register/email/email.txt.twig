@@ -1,0 +1,5 @@
+Bienvenue ! {{ user.lastname }} {{ user.firstname }}
+
+Pour accéder à notre application, veuillez confirmer votre adresse e-mail en cliquant sur le bouton ci-dessous :
+
+{{ path('app_register_confirm_account', {'id':  user.id }) }} Vérifier mon compte

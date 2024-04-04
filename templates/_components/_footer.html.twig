@@ -1,0 +1,52 @@
+<footer class="bg-black text-white">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:py-30 pt-12 pb-20 md:gap-24 gap-16">
+            <div>
+                <p class="md:text-display-xl text-display-md font-semibold pb-4">
+                    Une idée?
+                </p>
+                <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
+                   class="md:text-display-xl text-display-md font-normal hover:text-primary-100 hover:underline">
+                    Discutons-en ↗
+                </a>
+            </div>
+            <div class="flex md:flex-row flex-col md:gap-8 gap-12 justify-between">
+                <div>
+                    <a href="mailto:bonjour@spaarple.fr"
+                       class="md:text-display-xs text-body-xl font-medium text-neutral-200 hover:text-primary-100 hover:underline">
+                        bonjour@spaarple.fr
+                    </a>
+                </div>
+                <div class="grid md:grid-cols-3 grid-cols-2 md:gap-12 gap-3 md:pl-32">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#work"
+                       class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
+                        Nos Réalisations
+                    </a>
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#services"
+                       class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
+                        Nos Valeurs
+                    </a>
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#integration"
+                       class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
+                        Intégrations
+                    </a>
+                    <a href="https://instagram.com/spaarple/" target="_blank"
+                       class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
+                        Instagram
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100090490419829" target="_blank"
+                       class="md:text-body-xl text-body-md font-normal text-neutral-200 hover:text-primary-100">
+                        Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-5">
+            © 2024 Spaarple - Tous droits réservés.
+            <a href="{{ path('app_home_mentions_legales') }}"
+               class=" font-medium text-neutral-200 hover:text-primary-100 hover:underline">
+                Mentions-légales
+            </a>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,23 @@
+{% extends 'base_email.html.twig' %}
+
+{% block title_email %}Contact{% endblock %}
+
+{% block css_email %}{% endblock %}
+
+{% block body_html_email %}
+    <p>Nous avons reçu une nouvelle demande de contact via notre site web. Voici les
+        informations fournies par l'utilisateur.
+    </p>
+
+    <ul>
+        <li>Nom, Prénom, Entreprise: <b>{{ who }}</b></li>
+        <li>Adresse e-mail: <b>{{ contactEmail }}</b></li>
+        <li>Message: {{ message }}</li>
+    </ul>
+
+    <p>Ceci est un e-mail automatique, veuillez ne pas y répondre.</p>
+
+    <a href="{{ path('app_login') }}" class="button">Retrouvez les demandes de contact directement dans votre compte.</a>
+{% endblock %}
+
+

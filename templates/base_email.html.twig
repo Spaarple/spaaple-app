@@ -1,0 +1,52 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .button {
+        background-color: #000000;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 50px;
+        font-size: 16px;
+        margin: 30px 30px;
+        cursor: pointer;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .container div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    {% block css_email %}{% endblock %}
+</style>
+
+<div style="background-color: #f8f9fa; padding: 20px; text-align: center;">
+    <h1>{% block title_email %}{% endblock %}</h1>
+</div>
+    {% block body_html_email %}{% endblock %}
+<footer style="background-color: #000000; color: #FFFFFF; padding: 20px; text-align: center;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <span>Une idée discutons en: <a href="mailto:bonjour@spaarple.fr" style="color: #FFFFFF; text-decoration: none;">bonjour@spaarple.fr</a></span>
+        </div>
+        <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+            <a href="https://instagram.com/spaarple/" target="_blank" style="color: #FFFFFF; text-decoration: none;">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=100090490419829" target="_blank" style="color: #FFFFFF; text-decoration: none;">Facebook</a>
+        </div>
+    </div>
+    <div>© 2024 Spaarple - Tous droits réservés.</div>
+</footer>
