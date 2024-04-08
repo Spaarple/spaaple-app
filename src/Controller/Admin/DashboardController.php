@@ -70,15 +70,6 @@ class DashboardController extends AbstractDashboardController
     }
 
     /**
-     * @return Assets
-     */
-    public function configureAssets(): Assets
-    {
-        return parent::configureAssets()
-            ->addWebpackEncoreEntry('app');
-    }
-
-    /**
      * @return iterable
      */
     public function configureMenuItems(): iterable
