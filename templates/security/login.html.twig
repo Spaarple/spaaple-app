@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion à mon compte | Spaarple{% endblock %}
 
 {% block meta_description %}Connectez-vous à votre compte pour accéder à votre espace personnel{% endblock %}
 
@@ -68,6 +68,10 @@
                     Connexion
                 </button>
             </form>
+            <div class="text-center text-muted mt-3">
+                <a href="{{ path('app_register_index') }}" class="hover:underline" tabindex="-1">
+                    Inscrivez-vous </a>des maintenant.
+            </div>
         </div>
     </div>
 {% endblock %}
