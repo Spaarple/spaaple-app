@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\Users\UserCrudController;
+use App\Entity\BulkContact;
 use App\Entity\Contact;
 use App\Entity\Estimate;
 use App\Entity\EstimateData;
@@ -96,6 +97,12 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Contacts', 'fa fa-envelope', Contact::class)
             ->setBadge($this->contactRepository->count([]), 'primary');
+
+        yield MenuItem::linkToCrud(
+            'Envoyer des messages',
+            'fa fa-envelope-open-text',
+            BulkContact::class
+        );
 
         yield MenuItem::section('Paramètres du compte');
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
