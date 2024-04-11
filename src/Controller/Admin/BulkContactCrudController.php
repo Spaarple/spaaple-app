@@ -78,8 +78,7 @@ class BulkContactCrudController extends AbstractCrudController
             TextField::new('subject', 'Sujet'),
             TextEditorField::new('message', 'Message Commun')
                 ->setNumOfRows(20),
-            DateTimeField::new('createdAt')->setLabel('Date de création'),
-            DateTimeField::new('updatedAt')->setLabel('Date de modification'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 
