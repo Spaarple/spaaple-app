@@ -71,7 +71,7 @@ Pour mettre en production le projet, il vous suffit de suivre les étapes suivan
   php bin/console cache:clear
 ```
 
-Vériifer que le projet est bien en production en ouvrant un navigateur et en tapant l'url suivante : http://spaarple.fr
+Vériifer que le projet est bien en production en ouvrant un navigateur et en tapant l'url suivante : https://spaarple.fr
 
 ## Coding Standards
 In this project, we adhere to certain coding standards to maintain readability and consistency.
