@@ -13,7 +13,6 @@ use App\Entity\User\UserClient;
 use App\Repository\ContactRepository;
 use App\Repository\EstimateRepository;
 use App\Repository\User\AbstractUserRepository;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
