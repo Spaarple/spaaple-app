@@ -17,6 +17,12 @@ trait TimestampableTrait
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     protected DateTimeImmutable $updatedAt;
 
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
+    }
+
     /**
      * Sets createdAt.
      *
