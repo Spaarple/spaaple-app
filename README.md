@@ -1,3 +1,9 @@
+<h1 align="center">
+  <a href="https://spaarple.fr">
+    <img src="assets/images/dark-logo.svg" alt="spaarple identité visuelle" width="400">
+  </a>
+</h1>
+
 # Description du projet
 Bonjour Spaarple :wave:
 #### Auteur : **LE JEUNE Maxime & MILLON Louka**
