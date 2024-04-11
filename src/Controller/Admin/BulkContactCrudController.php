@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -77,6 +78,8 @@ class BulkContactCrudController extends AbstractCrudController
             TextField::new('subject', 'Sujet'),
             TextEditorField::new('message', 'Message Commun')
                 ->setNumOfRows(20),
+            DateTimeField::new('createdAt')->setLabel('Date de création'),
+            DateTimeField::new('updatedAt')->setLabel('Date de modification'),
         ];
     }
 
