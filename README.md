@@ -66,3 +66,9 @@ Pour mettre en production le projet, il vous suffit de suivre les étapes suivan
 ```
 
 Vériifer que le projet est bien en production en ouvrant un navigateur et en tapant l'url suivante : http://spaarple.fr
+
+## Coding Standards
+In this project, we adhere to certain coding standards to maintain readability and consistency.
+For instance, function names should be in CamelCase, starting with a capital letter, 
+like **MyFunction()**. Similarly, variable names should be in **camelCase**, starting with a lowercase letter,
+like **$myVariable**. Please ensure that you follow these standards when contributing to the project.
