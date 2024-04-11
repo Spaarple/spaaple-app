@@ -78,8 +78,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('firstName', 'Prénom'),
             BooleanField::new('isBlocked', 'Bloquer l\'utilisateur'),
             BooleanField::new('isVerified', 'Vérifier l\'utilisateur'),
-            DateTimeField::new('createdAt')->setLabel('Date de création'),
-            DateTimeField::new('updatedAt')->setLabel('Date de modification'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 }

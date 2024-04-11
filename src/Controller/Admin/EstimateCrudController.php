@@ -84,7 +84,7 @@ class EstimateCrudController extends AbstractCrudController
             TextareaField::new('descriptionPage')->onlyOnDetail(),
             TextareaField::new('reference')->onlyOnDetail(),
             ArrayField::new('result', 'Résultat en (€)'),
-            DateTimeField::new('createdAt')->setLabel('Date de création'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 

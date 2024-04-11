@@ -60,7 +60,7 @@ class ContactCrudController extends AbstractCrudController
             EmailField::new('email'),
             TextField::new('who'),
             TextEditorField::new('message'),
-            DateTimeField::new('createdAt')->setLabel('Date de création'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 
