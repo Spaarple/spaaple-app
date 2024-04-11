@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -86,6 +87,8 @@ class UserAdminCrudController extends AbstractCrudController
                 ])->onlyOnDetail(),
             BooleanField::new('isBlocked', 'Bloquer l\'utilisateur'),
             BooleanField::new('isVerified', 'Vérifier l\'utilisateur'),
+            DateTimeField::new('createdAt')->setLabel('Date de création'),
+            DateTimeField::new('updatedAt')->setLabel('Date de modification'),
         ];
     }
 
