@@ -51,6 +51,9 @@ class Estimate
     #[ORM\Column(type: Types::TEXT)]
     private ?string $reference = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
     /**
      * @return Uuid|null
      */
@@ -226,6 +229,18 @@ class Estimate
     public function setReference(string $reference): static
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -57,9 +57,9 @@ class ContactCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            EmailField::new('email'),
-            TextField::new('who'),
-            TextEditorField::new('message'),
+            EmailField::new('email', 'Email'),
+            TextField::new('who', 'Envoyé par'),
+            TextEditorField::new('message', 'Message'),
             DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }

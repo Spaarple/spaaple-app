@@ -59,9 +59,11 @@ class EstimateController extends AbstractController
 
             if (!$userClient) {
                 $estimate->setUserClient(null);
+                $estimate->setEmail($request->request->all()['estimate_yours_site']['contactEmail']);
                 $this->sendMailToEstimate($request, $estimate);
             } else {
                 $estimate->setUserClient($userClient);
+                $estimate->setEmail($userClient->getEmail());
             }
 
             $entityManager->persist($estimate);

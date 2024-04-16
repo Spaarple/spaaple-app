@@ -16,6 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class EstimateCrudController extends AbstractCrudController
@@ -73,6 +74,7 @@ class EstimateCrudController extends AbstractCrudController
                     }
                     return null;
                 }),
+            EmailField::new('email', 'Email'),
             TextareaField::new('description')->onlyOnDetail(),
             EnumField::setEnumClass(CMS::class)::new('cms', 'CMS'),
             EnumField::setEnumClass(Complexity::class)::new('complexity', 'Complexité'),
