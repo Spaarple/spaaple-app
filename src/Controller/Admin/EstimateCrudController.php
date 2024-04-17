@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Estimate;
+use App\Entity\User\AbstractUser;
 use App\Entity\User\UserClient;
 use App\Enum\CMS;
 use App\Enum\Complexity;
@@ -63,9 +64,9 @@ class EstimateCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('userClient', 'Client')
+            AssociationField::new('user', 'Client')
                 ->formatValue(function ($value, $entity) {
-                    if($entity instanceof Estimate && $entity->getUser() instanceof UserClient) {
+                    if($entity instanceof Estimate && $entity->getUser() instanceof AbstractUser) {
                         return sprintf(
                             '%s %s',
                             $entity->getUser()->getFirstname(),
