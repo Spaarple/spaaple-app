@@ -65,11 +65,11 @@ class EstimateCrudController extends AbstractCrudController
         return [
             AssociationField::new('userClient', 'Client')
                 ->formatValue(function ($value, $entity) {
-                    if($entity instanceof Estimate && $entity->getUserClient() instanceof UserClient) {
+                    if($entity instanceof Estimate && $entity->getUser() instanceof UserClient) {
                         return sprintf(
                             '%s %s',
-                            $entity->getUserClient()->getFirstname(),
-                            $entity->getUserClient()->getLastname()
+                            $entity->getUser()->getFirstname(),
+                            $entity->getUser()->getLastname()
                         );
                     }
                     return null;
