@@ -1,0 +1,17 @@
+{% extends 'base_email.html.twig' %}
+
+{% block title_email %}Bienvenue chez Spaarple{% endblock %}
+
+{% block css_email %}{% endblock %}
+
+{% block body_html_email %}
+    <h1>Bienvenue ! {{ you.lastname }} {{ you.firstname }}</h1>
+
+    <p>Pour accéder à notre application, veuillez confirmer votre adresse e-mail en cliquant sur le bouton ci-dessous :</p>
+
+    <p>Ceci est un e-mail automatique, veuillez ne pas y répondre.</p>
+
+    <p>Vous pourrez vous connecter ensuite grâce a ce mot de passe : <b>{{ generatePassword }}</b></p>
+
+    <a href="{{ path('app_register_confirm_account', {'id':  you.id }) }}" class="button">Vérifier mon compte</a>
+{% endblock %}

@@ -2,13 +2,18 @@
 <html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta name="description" content="Explorez notre site pour découvrir comment nous donnons vie à vos idées en ligne.">
-        <meta name="robots" content="index, follow"/>
-        <link rel="canonical" href="{{ app.request.uri }}"/>
-        <link rel="icon" type="image/svg+xml" href="{{ asset('images/icons.svg') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="{{ app.request.uri }}">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('build/images/icons.svg') }}">
+
+        <meta property="og:image" content="{{ asset('build/images/spaarple-preview.png') }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+
+        <title>{% block title %}Spaarple{% endblock %}</title>
         <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
         {% block stylesheets %}

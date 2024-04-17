@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Estimate;
+use App\Entity\User\AbstractUser;
 use App\Entity\User\UserClient;
 use App\Enum\CMS;
 use App\Enum\Complexity;
@@ -40,7 +41,7 @@ class EstimateController extends AbstractController
     /**
      * @param Request $request
      * @param EntityManagerInterface $entityManager
-     * @param UserClient|null $userClient
+     * @param UserClient|null $user
      * @return Response
      * @throws TransportExceptionInterface
      */
@@ -48,7 +49,7 @@ class EstimateController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $entityManager,
-        #[CurrentUser] ?UserClient $userClient
+        #[CurrentUser] ?AbstractUser $user
     ): Response {
         $form = $this->createForm(EstimateYoursSiteType::class);
         $form->handleRequest($request);
@@ -57,11 +58,13 @@ class EstimateController extends AbstractController
             $estimate = $form->getData();
             $estimate->setResult($this->getResultEstimate($estimate));
 
-            if (!$userClient) {
-                $estimate->setUserClient(null);
+            if (!$user) {
+                $estimate->setUser(null);
+                $estimate->setEmail($request->request->all()['estimate_yours_site']['contactEmail']);
                 $this->sendMailToEstimate($request, $estimate);
             } else {
-                $estimate->setUserClient($userClient);
+                $estimate->setUser($user);
+                $estimate->setEmail($user->getEmail());
             }
 
             $entityManager->persist($estimate);
@@ -97,6 +100,7 @@ class EstimateController extends AbstractController
                 ->from(new Address($this->parameterBag->get('mail.support'), 'Spaarple'))
                 ->to($user)
                 ->subject('Votre Estimation')
+                ->textTemplate('estimate/email/email.txt.twig')
                 ->htmlTemplate('estimate/email/email.html.twig')
                 ->context([
                     'estimate' => $estimate,

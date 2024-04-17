@@ -6,6 +6,8 @@ namespace App\Entity\User;
 
 use App\Enum\Role;
 use App\Repository\User\AbstractUserRepository;
+use App\Traits\TimestampableTrait;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -29,6 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use TimestampableTrait;
 
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
@@ -61,7 +64,10 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     private ?bool $isVerified = false;
 
     public function __construct()
-    {}
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
+    }
 
     /**
      * @return Uuid|null

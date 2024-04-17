@@ -2,26 +2,28 @@
     <div class="container mx-auto">
         <div class="flex  justify-between items-center">
             <div class="flex flex-row gap-8 items-center">
-                <img src="{{ asset('images/dark-logo.svg') }}" alt="Spaarple identité numérique" title="Spaarple identité numérique" height="150em" width="150em">
+                <a href="{{ path('app_home_index') }}">
+                    <img src="{{ asset('build/images/dark-logo.svg') }}" alt="Spaarple identité numérique" title="Spaarple identité numérique" height="150" width="150">
+                </a>
             </div>
             <div class="flex flex-row gap-6">
                 <div class="md:flex hidden flex-row gap-6 items-center">
-                    <a href="#work" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#work" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
                         Réalisations
                     </a>
-                    <a href="#services" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#services" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
                         Nos Valeurs
                     </a>
-                    <a href="#integration" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#integration" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
                         Intégration
                     </a>
                     <a href="{{ path('app_login') }}" class="text-body-sm font-medium text-neutral-700 hover:text-neutral-900 px-4 hover:underline">
                         Connexion
                     </a>
                 </div>
-                <a href="mailto:bonjour@spaarple.fr"
+                <a href="{{ path('app_estimate_index') }}"
                    class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                    Demande d'informations
+                    Estimer mon site
                 </a>
             </div>
         </div>

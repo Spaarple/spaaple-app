@@ -2,7 +2,15 @@
 
  {% import "estimate/modal.html.twig" as modal %}
 
-{% block title %}Spaarple - Estimation d'application web{% endblock %}
+{% block title %}Estimation de votre application web | Spaarple{% endblock %}
+
+{% block meta_description %}Estimation de votre site web. Remplissez ce formulaire pour obtenir une estimation personnalisée de votre site et entrer en contact avec notre équipe dès aujourd'hui pour discuter de vos besoins et objectifs en ligne.
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('modal') }}
+{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}

@@ -12,10 +12,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_ADMINISTRATOR')]
@@ -24,9 +27,12 @@ class UserAdminCrudController extends AbstractCrudController
 
     /**
      * @param GeneratePasswordHelper $generatePasswordHelper
+     * @param UserPasswordHasherInterface $passwordHasher
      */
     public function __construct(
         private readonly GeneratePasswordHelper $generatePasswordHelper,
+        private readonly UserPasswordHasherInterface $passwordHasher,
+
     ) {
     }
 
@@ -79,6 +85,9 @@ class UserAdminCrudController extends AbstractCrudController
                 ->setChoices([
                     ucfirst(Role::ROLE_ADMINISTRATOR->value) => Role::ROLE_ADMINISTRATOR->name,
                 ])->onlyOnDetail(),
+            BooleanField::new('isBlocked', 'Bloquer l\'utilisateur'),
+            BooleanField::new('isVerified', 'Vérifier l\'utilisateur'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 
@@ -95,8 +104,12 @@ class UserAdminCrudController extends AbstractCrudController
             return;
         }
 
-        $this->generatePasswordHelper->createAccount($entityInstance);
+        $generatePassword = $this->generatePasswordHelper->generatePassword(10);
+
+        $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $generatePassword));
 
         parent::persistEntity($entityManager, $entityInstance);
+
+        $this->generatePasswordHelper->sendMailAdmin($entityInstance, $generatePassword);
     }
 }

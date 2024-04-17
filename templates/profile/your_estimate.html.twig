@@ -8,10 +8,16 @@
             <div class="flex flex-col sm:flex-row justify-between items-center">
                 <h1 class="lg:text-display-1xl text-display-md font-semibold mb-4 sm:mb-0">Mes estimations</h1>
                 <div class="flex justify-around space-x-4">
-                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-info text-body-sm font-semibold text-white bg-info
+                    <a href="{{ path('app_profile_index') }}"
+                       class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-700 text-body-sm font-semibold text-white bg-neutral-700
+            py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Retour
+                    </a>
+                    <a href="{{ path('app_contact_profile_index') }}"
+                       class="transform hover:scale-110 transition-transform duration-200 hover:bg-info text-body-sm font-semibold text-white bg-info
                     py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
-                        Nous contactez
-                    </button>
+                        Nous contacter
+                    </a>
                 </div>
             </div>
         </div>
@@ -30,6 +36,7 @@
                                     <th scope="col" class="px-6 py-3">Intégration(s)</th>
                                     <th scope="col" class="px-6 py-3">Pages</th>
                                     <th scope="col" class="px-6 py-3">Type de page</th>
+                                    <th scope="col" class="px-6 py-3">Estimation</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +53,7 @@
                                         </td>
                                         <td class="px-6 py-4">{{ estimate.page.value }}</td>
                                         <td class="px-6 py-4">{{ estimate.descriptionPage }}</td>
+                                        <td class="px-6 py-4">entre {{ estimate.result[0] }} et {{ estimate.result[1] }} €</td>
                                     </tr>
                                     {% else %}
                                     <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">

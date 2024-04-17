@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription | Spaarple{% endblock %}
+
+{% block meta_description %}Inscrivez-vous sur Spaarple pour accéder à tous nos services{% endblock %}
 
 {% block body %}
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-20">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h1 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Inscription
-            </h2>
+            </h1>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -16,15 +18,14 @@
             {{ form_row(form.firstName) }}
             {{ form_row(form.email) }}
             {{ form_row(form.password) }}
-            <div class="flex flex-col items-center">
                 <button class="hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
                             py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
                     S'inscrire
                 </button>
-            </div>
             {{ form_end(form) }}
             <div class="text-center text-muted mt-3">
-                Vous avez déjà un compte ? <a href="{{ path('app_login') }}" tabindex="-1">Se connecter</a>
+                Vous avez déjà un compte ?
+                <a href="{{ path('app_login') }}" class="hover:underline" tabindex="-1">Se connecter</a>
             </div>
         </div>
     </div>

@@ -11,12 +11,12 @@ interface GeneratePasswordInterfaceHelper
      *
      * @return string
      */
-    public static function generatePassword(int $length): string;
+    public function generatePassword(int $length): string;
 
     /**
      * @param $entityInstance
-     *
+     * @param string $generatePassword
      * @return void
      */
-    public function createAccount($entityInstance): void;
+    public function sendMailAdmin($entityInstance, string $generatePassword): void;
 }

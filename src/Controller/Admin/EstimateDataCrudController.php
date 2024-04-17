@@ -39,7 +39,8 @@ class EstimateDataCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('experiment', 'Notre Expérience'),
+            TextField::new('experiment', 'Notre Expérience')
+                ->setHelp('Exemple: 10 ans d\'expérience ou 1000 projets réalisés'),
             PercentField::new('prepayment', 'Paiement Anticipé Obligatoire'),
             PercentField::new('profit', 'Marge Bénéficiaire'),
         ];

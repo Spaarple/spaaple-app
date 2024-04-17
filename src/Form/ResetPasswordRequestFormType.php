@@ -19,6 +19,7 @@ class ResetPasswordRequestFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                'label' => 'Adresse Email',
                 'attr' => [
                     'autocomplete' => 'email',
                     'placeholder' => 'Votre email',

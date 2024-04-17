@@ -1,0 +1,18 @@
+Bonjour,
+Voici le détail de l'estimation
+
+
+    {{ estimate.description }}
+    {{ estimate.reference }}
+    {{ estimate.cms.value }}
+    {{ estimate.complexity.value }}
+    {% for integrate in estimate.integration %}
+        {{ integrate.value }},
+    {% endfor %}
+    {{ estimate.page.value }}
+    {{ estimate.descriptionPage }}
+    Votre site est estimé entre: {{ estimate.result[0] }} et {{ estimate.result[1] }}
+
+
+
+

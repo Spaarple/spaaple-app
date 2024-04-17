@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Estimate;
+use App\Entity\User\AbstractUser;
 use App\Entity\User\UserClient;
 use App\Enum\CMS;
 use App\Enum\Complexity;
@@ -12,9 +13,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class EstimateCrudController extends AbstractCrudController
@@ -51,9 +54,7 @@ class EstimateCrudController extends AbstractCrudController
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->remove(Crud::PAGE_INDEX, Action::NEW)
             ->remove(Crud::PAGE_INDEX, Action::EDIT)
-            ->remove(Crud::PAGE_INDEX, Action::DELETE)
-            ->remove(Crud::PAGE_DETAIL, Action::EDIT)
-            ->remove(Crud::PAGE_DETAIL, Action::DELETE);
+            ->remove(Crud::PAGE_DETAIL, Action::EDIT);
     }
 
     /**
@@ -63,17 +64,18 @@ class EstimateCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('userClient', 'Client')
+            AssociationField::new('user', 'Client')
                 ->formatValue(function ($value, $entity) {
-                    if($entity instanceof Estimate && $entity->getUserClient() instanceof UserClient) {
+                    if($entity instanceof Estimate && $entity->getUser() instanceof AbstractUser) {
                         return sprintf(
                             '%s %s',
-                            $entity->getUserClient()->getFirstname(),
-                            $entity->getUserClient()->getLastname()
+                            $entity->getUser()->getFirstname(),
+                            $entity->getUser()->getLastname()
                         );
                     }
                     return null;
                 }),
+            EmailField::new('email', 'Email'),
             TextareaField::new('description')->onlyOnDetail(),
             EnumField::setEnumClass(CMS::class)::new('cms', 'CMS'),
             EnumField::setEnumClass(Complexity::class)::new('complexity', 'Complexité'),
@@ -84,7 +86,8 @@ class EstimateCrudController extends AbstractCrudController
             EnumField::setEnumClass(NumberPage::class)::new('page', 'Nombre de page'),
             TextareaField::new('descriptionPage')->onlyOnDetail(),
             TextareaField::new('reference')->onlyOnDetail(),
-            NumberField::new('result', 'Résultat'),
+            ArrayField::new('result', 'Résultat en (€)'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 

@@ -13,6 +13,10 @@
            width: 75px;
            height: 75px;
         }
+        label.required::after {
+            content:" *"!important;
+            color:red!important;
+        }
     }
     @layer components {
     }
