@@ -25,6 +25,7 @@ class ContactType extends AbstractType
                     'label' => 'Adresse email',
                     'attr' => [
                         'placeholder' => 'Adresse email',
+                        'autocomplete' => true,
                     ],
                     'required' => true,
                 ])
@@ -32,6 +33,7 @@ class ContactType extends AbstractType
                     'label' => 'Nom Prénom, Société ou Association',
                     'attr' => [
                         'placeholder' => 'Nom, Prénom, Société ou Association',
+                        'autocomplete' => true,
                     ],
                     'required' => true,
                 ])
@@ -40,6 +42,7 @@ class ContactType extends AbstractType
                     'attr' => [
                         'placeholder' => 'Votre message',
                         'rows' => '5',
+                        'autocomplete' => true,
                     ],
                     'required' => true,
                 ]);
@@ -49,6 +52,7 @@ class ContactType extends AbstractType
                 'label' => 'Message',
                 'attr' => [
                     'placeholder' => 'Votre message',
+                    'autocomplete' => true,
                     'rows' => '7',
                 ],
                 'required' => true,
