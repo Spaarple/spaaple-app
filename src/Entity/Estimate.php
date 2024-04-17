@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Entity\User\UserClient;
+use App\Entity\User\AbstractUser;
 use App\Enum\CMS;
 use App\Enum\Complexity;
 use App\Enum\NumberPage;
@@ -25,7 +25,7 @@ class Estimate
 
     #[ORM\ManyToOne(inversedBy: 'estimates')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?UserClient $userClient = null;
+    private ?AbstractUser $user = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $integration = [];
@@ -63,20 +63,20 @@ class Estimate
     }
 
     /**
-     * @return UserClient|null
+     * @return AbstractUser|null
      */
-    public function getUserClient(): ?UserClient
+    public function getUser(): ?AbstractUser
     {
-        return $this->userClient;
+        return $this->user;
     }
 
     /**
-     * @param UserClient|null $userClient
+     * @param AbstractUser|null $user
      * @return $this
      */
-    public function setUserClient(?UserClient $userClient): static
+    public function setUser(?AbstractUser $user): static
     {
-        $this->userClient = $userClient;
+        $this->user = $user;
 
         return $this;
     }
