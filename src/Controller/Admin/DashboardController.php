@@ -64,7 +64,7 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('Spaarple')
             ->setTranslationDomain('admin')
-            ->setFaviconPath('images/icons.svg')
+            ->setFaviconPath('build/images/icons.svg')
             ->disableUrlSignatures();
     }
 
