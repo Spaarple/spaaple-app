@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Estimate;
 use App\Entity\User\AbstractUser;
+use App\Entity\User\UserAdministrator;
 use App\Entity\User\UserClient;
 use App\Enum\CMS;
 use App\Enum\Complexity;
@@ -51,6 +52,11 @@ class EstimateController extends AbstractController
         EntityManagerInterface $entityManager,
         #[CurrentUser] ?AbstractUser $user
     ): Response {
+
+        if (!$user instanceof UserAdministrator) {
+            return $this->redirectToRoute('app_home_index');
+        }
+
         $form = $this->createForm(EstimateYoursSiteType::class);
         $form->handleRequest($request);
 
