@@ -51,8 +51,7 @@ class DashboardController extends AbstractDashboardController
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
 
         return $this->redirect(
-            $adminUrlGenerator->setController(UserCrudController::class)
-                ->generateUrl()
+            $adminUrlGenerator->setController(UserCrudController::class)->generateUrl()
         );
     }
 
@@ -95,6 +94,7 @@ class DashboardController extends AbstractDashboardController
         );
 
         yield MenuItem::section('Paramètres du compte');
+        yield MenuItem::linkToRoute('Mon profil', 'fa fa-address-card', 'app_profile_index');
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
     }
 
@@ -109,6 +109,9 @@ class DashboardController extends AbstractDashboardController
                 $user->getFirstName(),
                 $user->getLastName(),
                 $user->getEmail()
-            ));
+            ))
+            ->addMenuItems([
+                MenuItem::linkToRoute('Mon profil', 'fa fa-address-card', 'app_profile_index')
+            ]);
     }
 }
