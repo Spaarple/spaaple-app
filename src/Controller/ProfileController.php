@@ -98,7 +98,7 @@ class ProfileController extends AbstractController
     #[Route('/your-estimate', name: '_your_estimate')]
     public function yourEstimate(EstimateRepository $estimateRepository, #[CurrentUser] AbstractUser $user): Response
     {
-        $estimates = $estimateRepository->findBy(['userClient' => $user]);
+        $estimates = $estimateRepository->findBy(['user' => $user]);
 
         return $this->render('profile/your_estimate.html.twig', [
             'estimates' => $estimates,
