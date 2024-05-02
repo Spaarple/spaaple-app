@@ -8,7 +8,6 @@ use App\Enum\Complexity;
 use App\Enum\Integration;
 use App\Enum\NumberPage;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -36,7 +35,7 @@ class EstimateYoursSiteType extends AbstractType
             ])
             ->add('cms', EnumType::class, [
                 'class' => CMS::class,
-                'label' => 'Quel CMS souhaitez-vous utilisez ?',
+                'label' => 'Quel outil de création de site web préférez-vous utiliser ?',
                 'choice_label' => 'value',
                 'choice_value' => 'name',
                 'expanded' => true,
@@ -54,7 +53,7 @@ class EstimateYoursSiteType extends AbstractType
             ])
             ->add('complexity', EnumType::class, [
                 'class' => Complexity::class,
-                'label' => 'Comment estimez-vous la complexité du site ?',
+                'label' => 'À quel point pensez-vous que le site sera difficile à réaliser ?',
                 'choice_label' => 'value',
                 'choice_value' => 'name',
                 'expanded' => true,

@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Estimate;
 use App\Entity\User\AbstractUser;
-use App\Entity\User\UserClient;
 use App\Enum\CMS;
 use App\Enum\Complexity;
 use App\Enum\NumberPage;
@@ -19,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class EstimateCrudController extends AbstractCrudController
 {
