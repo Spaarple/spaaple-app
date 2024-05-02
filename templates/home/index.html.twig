@@ -20,7 +20,7 @@
                         de sites web et en développement de projets digitaux personnalisés, nous donnons vie à vos idées.
                         <br>Découvrez comment nous pouvons vous accompagner.
                     </p>
-                    <a href="{{ path('app_estimate_index') }}"
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
                        class="transform hover:scale-110 transition-transform duration-200 text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
                         Transformez votre vision en réalité
                     </a>
@@ -123,8 +123,9 @@
                                     Klerp
                                 </h3>
                                 <p class="lg:text-body-md text-body-sm font-normal text-neutral-700">
-                                    Simplifiez la gestion de votre entreprise avec Klerp : l'application ERP conçue
-                                    spécialement pour les besoins des petites entreprises.
+                                    Simplifiez la gestion de votre entreprise avec Klerp : l'application ERP
+                                    <span class="italic underline">(Enterprise Resource Planning ou PRE: Planification des Ressources de l'Entreprise)</span>
+                                    conçue spécialement pour les besoins des petites entreprises.
                                 </p>
                             </div>
                         </div>
@@ -156,7 +157,7 @@
         </div>
     </div>
 
-    <div id="services">
+    <div id="expertises">
         <div class="md:container md:mx-auto">
             <div class="lg:py-30 md:py-16 pt-5 pb-12">
                 <div class="flex flex-col relative bg-darkness-200 lg:py-0 py-10">
@@ -171,7 +172,7 @@
                                 À chaque étape, notre engagement pour l'intégrité, l'innovation et la satisfaction
                                 client forge les piliers solides de notre entreprise.
                             </p>
-                            <a href="{{ path('app_estimate_index') }}"
+                            <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
                                class="text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
                                 Découvrir nos expertises
                             </a>
@@ -218,6 +219,157 @@
             </div>
         </div>
     </div>
+
+    <section id="services" class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl">
+            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+                <h2 class="md:text-display-md text-display-md font-semibold md:pb-6 pb-4">
+                    Transformer votre présence en ligne !
+                </h2>
+                <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                    Du design initial à la maintenance continue, nous mettons notre savoir-faire au service de votre site internet, afin qu'il brille et prospère dans le monde numérique.
+                </p>
+            </div>
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-16 lg:space-y-0">
+                <div class="scale-90 transform hover:scale-100 transition-transform duration-200 hover:border-black bg-white flex flex-col p-8 shadow-xl mx-auto max-w-lg text-center text-gray-900 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                    <h3 class="mb-4 text-2xl font-semibold">Maintenance de votre Site Internet</h3>
+                    <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        Assurez la stabilité et la performance de votre site web avec notre service de maintenance expert.
+                        Mises à jour régulières, sécurité renforcée, tranquillité d'esprit assurée.
+                    </p>
+                    <ul role="list" class="mb-8 space-y-4 text-left items-baseline my-8">
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Surveillance et protection contre les menaces potentielles du site.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Mises à jour régulières du système de gestion de contenu (CMS), des plugins et des thèmes pour assurer la sécurité et la compatibilité.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Sauvegardes régulières des données pour prévenir toute perte d'informations.</span>
+                        </li>
+
+                    </ul>
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
+                       class="text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Je veux de la maintenance
+                    </a>
+                </div>
+                <div class="scale-100 transform hover:scale-105 transition-transform duration-200 bg-white flex flex-col p-8 shadow-xl mx-auto max-w-lg text-center text-gray-900 rounded-lg border border-black shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                    <h3 class="mb-4 text-2xl font-semibold">Création de site & Application Web</h3>
+                    <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Création sur mesure de sites et d'applications web, répondant précisément à vos besoins et objectifs.</p>
+                    <ul role="list" class="mb-8 space-y-4 text-left items-baseline my-8">
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Interface utilisateur intuitive et expérience fluide pour une navigation agréable.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Intégration de fonctionnalités avancées pour répondre aux besoins spécifiques de votre projet</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Sécurité, performances de qualité et compatibilité avec les navigateurs web variés.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Optimisation SEO pour améliorer la visibilité et attirer un trafic qualifié.</span>
+                        </li>
+                    </ul>
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
+                       class="text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Je veux un site Internet
+                    </a>
+                </div>
+                <div class="scale-90 transform hover:scale-100 transition-transform duration-200 hover:border-black bg-white flex flex-col p-8 shadow-xl mx-auto max-w-lg text-center text-gray-900 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                    <h3 class="mb-4 text-2xl font-semibold">Créez votre boutique en ligne</h3>
+                    <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        Créez votre boutique en ligne avec notre expertise e-commerce. Designs attrayants, fonctionnalités avancées, succès assuré..
+                    </p>
+                    <ul role="list" class="mb-8 space-y-4 text-left items-baseline my-8">
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Intégration de fonctionnalités telles que la gestion des produits, le panier d'achat, les paiements sécurisés, et plus encore.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Création d'un design attrayant pour votre boutique en ligne, reflétant l'identité de votre marque.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <span>Support continu après le lancement, mises à jour régulières et un service client réactif pour répondre à vos besoins en évolution.</span>
+                        </li>
+                    </ul>
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}#contact"
+                       class="text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                        Je veux une boutique en ligne
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div id="integration">
         <div class="container mx-auto">
