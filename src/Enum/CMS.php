@@ -11,6 +11,6 @@ enum CMS: string
     use EnumTrait;
 
     case AUCUN = 'Création personnalisée du site';
-    case SHOPIFY = 'Plateforme de commerce en ligne prête à l\'emploi (Shopify)';
-    case WORDPRESS = 'Outil de création de site web simple et populaire (Wordpress)';
+    case SHOPIFY = 'Plateforme de commerce en ligne prête à l\'emploi (e-commerce)';
+    case WORDPRESS = 'Outil de création de site web simple et populaire';
 }

@@ -20,8 +20,8 @@ final class Version20240502083802 extends AbstractMigration
 
         $cmsNew = [
             'Création personnalisée du site',
-            'Plateforme de commerce en ligne prête à l\'emploi (Shopify)',
-            'Outil de création de site web simple et populaire (Wordpress)',
+            'Plateforme de commerce en ligne prête à l\'emploi (e-commerce)',
+            'Outil de création de site web simple et populaire',
         ];
 
         for ($i = 0, $iMax = count($cmsOld); $i < $iMax; $i++) {
@@ -38,8 +38,8 @@ final class Version20240502083802 extends AbstractMigration
 
         $cmsNew = [
             'Création personnalisée du site',
-            'Plateforme de commerce en ligne prête à l\'emploi (Shopify)',
-            'Outil de création de site web simple et populaire (Wordpress)',
+            'Plateforme de commerce en ligne prête à l\'emploi (e-commerce)',
+            'Outil de création de site web simple et populaire',
         ];
 
         for ($i = 0, $iMax = count($cmsOld); $i < $iMax; $i++) {
