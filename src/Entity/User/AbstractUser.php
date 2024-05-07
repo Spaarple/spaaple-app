@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace App\Entity\User;
 
+use App\Entity\Estimate;
 use App\Enum\Role;
 use App\Repository\User\AbstractUserRepository;
+use App\Traits\TimestampableTrait;
+use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -29,6 +34,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use TimestampableTrait;
 
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
@@ -60,8 +66,15 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $isVerified = false;
 
+    #[ORM\OneToMany(targetEntity: Estimate::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $estimates;
+
     public function __construct()
-    {}
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
+        $this->estimates = new ArrayCollection();
+    }
 
     /**
      * @return Uuid|null
@@ -234,6 +247,41 @@ abstract class AbstractUser implements UserInterface, PasswordAuthenticatedUserI
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Estimate>
+     */
+    public function getEstimates(): Collection
+    {
+        return $this->estimates;
+    }
+
+    /**
+     * @param Estimate $estimate
+     * @return $this
+     */
+    public function addEstimate(Estimate $estimate): static
+    {
+        if (!$this->estimates->contains($estimate)) {
+            $this->estimates->add($estimate);
+            $estimate->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Estimate $estimate
+     * @return $this
+     */
+    public function removeEstimate(Estimate $estimate): static
+    {
+        if ($this->estimates->removeElement($estimate) && $estimate->getUser() === $this) {
+            $estimate->setUser(null);
+        }
 
         return $this;
     }

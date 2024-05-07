@@ -17,7 +17,7 @@ readonly class AlertService implements AlertServiceInterface
             ->position('x', 'right')
             ->position('y', 'top')
             ->duration(2000)
-            ->addSuccess($message);
+            ->addSuccess($message,null, ['background' => '#4C956C']);
     }
 
     /**
@@ -30,7 +30,7 @@ readonly class AlertService implements AlertServiceInterface
             ->position('x', 'right')
             ->position('y', 'top')
             ->duration(2000)
-            ->addError($message);
+            ->addError($message,null, ['background' => '#EF233C']);
     }
 
     /**
@@ -43,7 +43,7 @@ readonly class AlertService implements AlertServiceInterface
             ->position('x', 'right')
             ->position('y', 'top')
             ->duration(2000)
-            ->addWarning($message);
+            ->addWarning($message,null, ['background' => '#FAA307']);
     }
 
     /**
@@ -56,6 +56,6 @@ readonly class AlertService implements AlertServiceInterface
             ->position('x', 'right')
             ->position('y', 'top')
             ->duration(2000)
-            ->addInfo($message);
+            ->addInfo($message,null, ['background' => '#83C5BE']);
     }
 }

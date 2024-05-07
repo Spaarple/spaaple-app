@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Entity\User\UserClient;
+use App\Entity\User\AbstractUser;
 use App\Enum\CMS;
 use App\Enum\Complexity;
 use App\Enum\NumberPage;
 use App\Repository\EstimateRepository;
+use App\Traits\TimestampableTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
@@ -14,6 +15,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: EstimateRepository::class)]
 class Estimate
 {
+    use TimestampableTrait;
+
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -22,7 +25,7 @@ class Estimate
 
     #[ORM\ManyToOne(inversedBy: 'estimates')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?UserClient $userClient = null;
+    private ?AbstractUser $user = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $integration = [];
@@ -48,6 +51,9 @@ class Estimate
     #[ORM\Column(type: Types::TEXT)]
     private ?string $reference = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
     /**
      * @return Uuid|null
      */
@@ -57,20 +63,20 @@ class Estimate
     }
 
     /**
-     * @return UserClient|null
+     * @return AbstractUser|null
      */
-    public function getUserClient(): ?UserClient
+    public function getUser(): ?AbstractUser
     {
-        return $this->userClient;
+        return $this->user;
     }
 
     /**
-     * @param UserClient|null $userClient
+     * @param AbstractUser|null $user
      * @return $this
      */
-    public function setUserClient(?UserClient $userClient): static
+    public function setUser(?AbstractUser $user): static
     {
-        $this->userClient = $userClient;
+        $this->user = $user;
 
         return $this;
     }
@@ -223,6 +229,18 @@ class Estimate
     public function setReference(string $reference): static
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }

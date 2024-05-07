@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\ArrayFilter;
@@ -76,10 +77,14 @@ class UserClientCrudController extends AbstractCrudController
             TextField::new('lastName', 'Nom'),
             TextField::new('firstName', 'Prénom'),
             ChoiceField::new('roles', 'Roles')
+                ->setValue(Role::ROLE_ADMINISTRATOR->name)
                 ->allowMultipleChoices()
-                ->setChoices(Role::asArrayInverted()),
+                ->setChoices([
+                    ucfirst(Role::ROLE_ADMINISTRATOR->value) => Role::ROLE_ADMINISTRATOR->name,
+                ])->onlyOnDetail(),
             BooleanField::new('isBlocked', 'Bloquer l\'utilisateur'),
             BooleanField::new('isVerified', 'Vérifier l\'utilisateur'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 }

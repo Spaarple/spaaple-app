@@ -13,4 +13,4 @@ window.addEventListener('scroll', function() {
     window.scrollY > 0 ? header.classList.add('shadow-md') : header.classList.remove('shadow-md');
 });
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+console.log('This log comes from assets/app.js');

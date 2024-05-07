@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\Users\UserCrudController;
+use App\Entity\BulkContact;
 use App\Entity\Contact;
 use App\Entity\Estimate;
 use App\Entity\EstimateData;
@@ -12,7 +13,6 @@ use App\Entity\User\UserClient;
 use App\Repository\ContactRepository;
 use App\Repository\EstimateRepository;
 use App\Repository\User\AbstractUserRepository;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
@@ -51,8 +51,7 @@ class DashboardController extends AbstractDashboardController
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
 
         return $this->redirect(
-            $adminUrlGenerator->setController(UserCrudController::class)
-                ->generateUrl()
+            $adminUrlGenerator->setController(UserCrudController::class)->generateUrl()
         );
     }
 
@@ -64,17 +63,8 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('Spaarple')
             ->setTranslationDomain('admin')
-            ->setFaviconPath('images/icons.svg')
+            ->setFaviconPath('build/images/icons.svg')
             ->disableUrlSignatures();
-    }
-
-    /**
-     * @return Assets
-     */
-    public function configureAssets(): Assets
-    {
-        return parent::configureAssets()
-            ->addWebpackEncoreEntry('app');
     }
 
     /**
@@ -97,7 +87,14 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Contacts', 'fa fa-envelope', Contact::class)
             ->setBadge($this->contactRepository->count([]), 'primary');
 
+        yield MenuItem::linkToCrud(
+            'Envoyer des messages',
+            'fa fa-envelope-open-text',
+            BulkContact::class
+        );
+
         yield MenuItem::section('Paramètres du compte');
+        yield MenuItem::linkToRoute('Mon profil', 'fa fa-address-card', 'app_profile_index');
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
     }
 
@@ -112,6 +109,9 @@ class DashboardController extends AbstractDashboardController
                 $user->getFirstName(),
                 $user->getLastName(),
                 $user->getEmail()
-            ));
+            ))
+            ->addMenuItems([
+                MenuItem::linkToRoute('Mon profil', 'fa fa-address-card', 'app_profile_index')
+            ]);
     }
 }

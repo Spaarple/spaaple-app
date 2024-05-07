@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Estimate;
-use App\Entity\User\UserClient;
+use App\Entity\User\AbstractUser;
 use App\Enum\CMS;
 use App\Enum\Complexity;
 use App\Enum\NumberPage;
@@ -15,8 +15,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class EstimateCrudController extends AbstractCrudController
 {
@@ -62,17 +64,18 @@ class EstimateCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('userClient', 'Client')
+            AssociationField::new('user', 'Client')
                 ->formatValue(function ($value, $entity) {
-                    if($entity instanceof Estimate && $entity->getUserClient() instanceof UserClient) {
+                    if($entity instanceof Estimate && $entity->getUser() instanceof AbstractUser) {
                         return sprintf(
                             '%s %s',
-                            $entity->getUserClient()->getFirstname(),
-                            $entity->getUserClient()->getLastname()
+                            $entity->getUser()->getFirstname(),
+                            $entity->getUser()->getLastname()
                         );
                     }
                     return null;
                 }),
+            EmailField::new('email', 'Email'),
             TextareaField::new('description')->onlyOnDetail(),
             EnumField::setEnumClass(CMS::class)::new('cms', 'CMS'),
             EnumField::setEnumClass(Complexity::class)::new('complexity', 'Complexité'),
@@ -84,6 +87,7 @@ class EstimateCrudController extends AbstractCrudController
             TextareaField::new('descriptionPage')->onlyOnDetail(),
             TextareaField::new('reference')->onlyOnDetail(),
             ArrayField::new('result', 'Résultat en (€)'),
+            DateTimeField::new('createdAt')->setLabel('Date de création')->onlyOnIndex(),
         ];
     }
 

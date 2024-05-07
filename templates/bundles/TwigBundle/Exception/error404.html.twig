@@ -1,0 +1,21 @@
+{% extends 'base_error.html.twig' %}
+
+{% block title %}Erreur 404 - Spaarple{% endblock %}
+
+{% block body %}
+    <main class="grid min-h-full place-items-center  px-6 py-24 sm:py-32 lg:px-8">
+        <div class="text-center">
+            <h1 class="lg:text-display-1xl md:text-display-xl text-display-md font-semibold">Erreur 404</h1>
+            <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page non trouvée</h1>
+            <p class="mt-6 text-base leading-7 text-gray-600">Désolé, nous n'avons pas pu trouver la page que vous cherchez.</p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a href="{{ path('app_home_index') }}"
+                   class="animate-bounce  hover:bg-neutral-800
+                    text-body-sm font-semibold text-white bg-neutral-900 py-4 pl-5 pr-4 rounded-full
+                    flex flex-row gap-2 items-center justify-center">
+                    Retour à l'accueil ->
+                </a>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactRepository;
+use App\Repository\BulkContactRepository;
 use App\Traits\TimestampableTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 
-#[ORM\Entity(repositoryClass: ContactRepository::class)]
-class Contact
+#[ORM\Entity(repositoryClass: BulkContactRepository::class)]
+class BulkContact
 {
     use TimestampableTrait;
 
@@ -20,13 +20,13 @@ class Contact
     private ?Uuid $id = null;
 
     #[ORM\Column(type: Types::STRING, length: 180)]
-    private ?string $email = null;
+    private ?string $subject = null;
 
-    #[ORM\Column(type: Types::STRING, length: 255,)]
-    private ?string $who = null;
-
-    #[ORM\Column(type: Types::TEXT, length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
+
+    #[ORM\Column(type: Types::JSON)]
+    private array $email = [];
 
     /**
      * @return Uuid|null
@@ -39,37 +39,18 @@ class Contact
     /**
      * @return string|null
      */
-    public function getEmail(): ?string
+    public function getSubject(): ?string
     {
-        return $this->email;
+        return $this->subject;
     }
 
     /**
-     * @param string $email
+     * @param string $subject
      * @return $this
      */
-    public function setEmail(string $email): static
+    public function setSubject(string $subject): static
     {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getWho(): ?string
-    {
-        return $this->who;
-    }
-
-    /**
-     * @param string $who
-     * @return $this
-     */
-    public function setWho(string $who): static
-    {
-        $this->who = $who;
+        $this->subject = $subject;
 
         return $this;
     }
@@ -82,13 +63,28 @@ class Contact
         return $this->message;
     }
 
-    /**
-     * @param string $message
-     * @return $this
-     */
     public function setMessage(string $message): static
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEmail(): array
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param array $email
+     * @return $this
+     */
+    public function setEmail(array $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }
