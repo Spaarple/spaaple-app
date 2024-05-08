@@ -30,6 +30,14 @@ class Category
     }
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * @return Uuid|null
      */
     public function getId(): ?Uuid
