@@ -81,7 +81,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Clients', null, UserClient::class),
         ])->setBadge($this->userRepository->count([]), 'primary');
 
-        yield MenuItem::subMenu('Blog', 'fas fa-users')->setSubItems([
+        yield MenuItem::subMenu('Blog', 'fas fa-newspaper')->setSubItems([
             MenuItem::linkToCrud('Articles', null, Article::class),
             MenuItem::linkToCrud('Catégories', null, Category::class),
         ]);

@@ -35,6 +35,12 @@ class Article
     #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $isPublished = false;
 
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $slug = null;
+
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $subtitle = null;
+
     /**
      * @return Uuid|null
      */
@@ -130,6 +136,44 @@ class Article
     public function setIsPublished(bool $isPublished): static
     {
         $this->isPublished = $isPublished;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return $this
+     */
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @param string $subtitle
+     * @return $this
+     */
+    public function setSubtitle(string $subtitle): static
+    {
+        $this->subtitle = $subtitle;
 
         return $this;
     }

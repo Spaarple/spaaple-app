@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block meta_description %}Blog de Spaarple.{% endblock %}
+
+{% block body %}
+    <div class="grid md:grid-cols-6 gap-4">
+        <div class="col-start-2 col-span-4">
+            <div class="flex min-h-full flex-col justify-center mt-20">
+                <div class="space-y-12">
+                    <div class="border-b border-gray-900/10 pb-12 text-center">
+                        <h1 class="lg:text-display-1xl md:text-display-xl text-display-md font-semibold pb-10">
+                            {{ article.title }}
+                        </h1>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">
+                            {{ article.subtitle }}
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-10 sm:mx-auto sm:w-full">
+                    <div class="flex flex-col mb-20">
+                        {{ article.content|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if similar_articles is not empty %}
+        <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
+            <div class="px-4 mx-auto max-w-screen-xl">
+                <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
+                <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+                    {% for similar in similar_articles %}
+                        <article class="max-w-xs">
+                            <a href="#">
+                                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
+                            </a>
+                            <div class="flex justify-between items-center mb-5 text-gray-500">
+                          <span style="background-color: {{ similar.category.color }}"
+                                class="text-blue-50 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
+                              {{ similar.category }}
+                          </span>
+                                <span class="text-sm">{{ similar.date|date('d/m/y') }}</span>
+                            </div>
+                            <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                                <a href="#">{{ similar.title }}</a>
+                            </h2>
+                            <p class="mb-4 text-gray-500 dark:text-gray-400">
+                                {{ similar.content|striptags|slice(0, 150) }}...
+                            </p>
+                            <a href="{{ path('app_home_article', {'slug': similar.slug}) }}"
+                               class="inline-flex items-center font-medium text-neutral-700 dark:text-neutral-700 hover:underline">
+                                Lire la suite
+                                <svg class="ml-2 w-4 h-4"
+                                     fill="currentColor"
+                                     viewBox="0 0 20 20"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                          clip-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </a>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </aside>
+    {% endif %}
+
+    {{ render(controller('App\\Controller\\ContactController::index')) }}
+{% endblock %}
+
+

@@ -24,6 +24,9 @@ class Category
     #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category')]
     private Collection $articles;
 
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $color = null;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -95,6 +98,25 @@ class Category
         if ($this->articles->removeElement($article) && $article->getCategory() === $this) {
             $article->setCategory(null);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param string $color
+     * @return $this
+     */
+    public function setColor(string $color): static
+    {
+        $this->color = $color;
 
         return $this;
     }
