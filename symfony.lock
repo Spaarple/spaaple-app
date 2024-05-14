@@ -55,6 +55,9 @@
             "tests/bootstrap.php"
         ]
     },
+    "slope-it/breadcrumb-bundle": {
+        "version": "2.0.0"
+    },
     "symfony/asset-mapper": {
         "version": "7.0",
         "recipe": {

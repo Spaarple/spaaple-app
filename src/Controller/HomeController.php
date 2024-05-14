@@ -3,12 +3,17 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
-use Symfony\Bridge\Doctrine\Types\UuidType;
+use SlopeIt\BreadcrumbBundle\Attribute\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/', name: 'app_home')]
+#[Breadcrumb([
+    'label' => 'Accueil',
+    'route' => 'app_home_index',
+    'translationDomain' => 'domain',
+])]
 class HomeController extends AbstractController
 {
     /**
@@ -34,6 +39,9 @@ class HomeController extends AbstractController
      * @return Response
      */
     #[Route('/blog', name: '_blog')]
+    #[Breadcrumb([
+        ['label' => 'Blog', 'route' => 'app_home_blog'],
+    ])]
     public function blog(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findBy([
@@ -51,6 +59,10 @@ class HomeController extends AbstractController
      * @return Response
      */
     #[Route('blog/{slug}', name: '_article', methods: ['GET'])]
+    #[Breadcrumb([
+        ['label' => 'Blog', 'route' => 'app_home_blog'],
+        ['label' => '$parent.title', 'route' => 'app_home_article', 'routeParameters' => ['slug']],
+    ])]
     public function show($slug, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->findOneBy([
@@ -69,7 +81,8 @@ class HomeController extends AbstractController
 ;
         return $this->render('home/article.html.twig',[
             'article' => $article,
-            'similar_articles' => $similarArticles
+            'similar_articles' => $similarArticles,
+            'parent' => $article,
         ]);
     }
 
