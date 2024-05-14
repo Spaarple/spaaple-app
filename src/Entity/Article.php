@@ -41,6 +41,9 @@ class Article
     #[ORM\Column(type: Types::STRING, length: 255)]
     private ?string $subtitle = null;
 
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $image = null;
+
     /**
      * @return Uuid|null
      */
@@ -174,6 +177,22 @@ class Article
     public function setSubtitle(string $subtitle): static
     {
         $this->subtitle = $subtitle;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     * @return $this
+     */
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

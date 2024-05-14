@@ -18,6 +18,8 @@
                         </p>
                     </div>
                 </div>
+                <img src="{{ asset('build/images/article/' ~ article.image) }}" class="h-auto max-w-xl  mb-5 rounded-lg"
+                     alt="{{ article.image }}">
                 <div class="mt-10 sm:mx-auto sm:w-full">
                     <div class="flex flex-col mb-20">
                         {{ article.content|raw }}
@@ -34,14 +36,12 @@
                 <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
                     {% for similar in similar_articles %}
                         <article class="max-w-xs">
-                            <a href="#">
-                                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
-                            </a>
+                            <img src="{{ asset('build/images/article/' ~ similar.image) }}" class="mb-5 rounded-lg" alt="{{ similar.image }}">
                             <div class="flex justify-between items-center mb-5 text-gray-500">
-                          <span style="background-color: {{ similar.category.color }}"
-                                class="text-blue-50 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                              {{ similar.category }}
-                          </span>
+                              <span style="background-color: {{ similar.category.color }}"
+                                    class="text-blue-50 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
+                                  {{ similar.category }}
+                              </span>
                                 <span class="text-sm">{{ similar.date|date('d/m/y') }}</span>
                             </div>
                             <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
