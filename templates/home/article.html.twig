@@ -30,7 +30,7 @@
     {% if similar_articles is not empty %}
         <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
             <div class="px-4 mx-auto max-w-screen-xl">
-                <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
+                <h2 class="md:text-display-md text-display-md font-semibold md:pb-6 pb-4">Articles similaires</h2>
                 <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
                     {% for similar in similar_articles %}
                         <article class="max-w-xs">
