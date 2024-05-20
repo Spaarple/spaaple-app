@@ -6,6 +6,8 @@
  * which should already be in your base.html.twig.
  */
 import './styles/app.css';
+import './utils';
+
 
 // Scroll event listener to add shadow to header
 window.addEventListener('scroll', function() {
