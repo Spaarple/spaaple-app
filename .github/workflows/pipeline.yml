@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: composer install -o
 
+      - name: Update Composer Autoloader
+        run: composer dump-autoload
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
