@@ -1,29 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}La Revue Numérique{% endblock %}
 
-{% block meta_description %}Blog de Spaarple.{% endblock %}
+{% block meta_description %}Explorez notre page regroupant tous nos articles, offrant une diversité de contenus sur la
+    technologie, le marketing, les tutoriels et bien plus encore. Restez informé et inspiré par notre expertise numérique.{% endblock %}
 
 {% block body %}
-    <div class="grid md:grid-cols-6 gap-4">
-        <div class="col-start-2 col-span-4">
-            <div class="flex min-h-full flex-col justify-center mt-20">
-                <div class="space-y-12">
-                    {{ slope_it_breadcrumb() }}
-                    <div class="border-b border-gray-900/10 pb-12 text-center">
-                        <h1 class="lg:text-display-1xl md:text-display-xl text-display-md font-semibold pb-10">
-                            Découvrez notre Blog
-                        </h1>
-                        <p class="mt-1 text-sm leading-6 text-gray-600">
-                            We use an agile approach to test assumptions and connect with the needs of your audience early and often.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <main class="pt-8 pb-16 lg:pt-16 bg-white dark:bg-gray-900 antialiased">
+        <div class="flex justify-between px-4 mx-auto max-w-screen-xl mt-20">
+            {{ slope_it_breadcrumb() }}
         </div>
-    </div>
+        <div class="flex justify-between px-4 mx-auto max-w-screen-xl mt-20">
+            <article class="mx-auto w-full max-w-5xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                <div class="border-b border-gray-900/10 pb-12 text-center">
+                    <h1 class="lg:text-display-1xl md:text-display-xl text-display-md font-semibold pb-10">
+                        La Revue du numérique
+                    </h1>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">
+                        Des articles tech aux tutoriels, tout ce dont vous avez besoin se trouve ici.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </main>
 
-    <section class="bg-white dark:bg-gray-900 mt-20">
+    <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div class="grid gap-8 lg:grid-cols-2">
                 {% for article in articles %}

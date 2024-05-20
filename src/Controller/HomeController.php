@@ -40,7 +40,7 @@ class HomeController extends AbstractController
      */
     #[Route('/blog', name: '_blog')]
     #[Breadcrumb([
-        ['label' => 'Blog', 'route' => 'app_home_blog'],
+        ['label' => 'La Revue', 'route' => 'app_home_blog'],
     ])]
     public function blog(ArticleRepository $articleRepository): Response
     {
@@ -60,7 +60,7 @@ class HomeController extends AbstractController
      */
     #[Route('blog/{slug}', name: '_article', methods: ['GET'])]
     #[Breadcrumb([
-        ['label' => 'Blog', 'route' => 'app_home_blog'],
+        ['label' => 'La Revue', 'route' => 'app_home_blog'],
         ['label' => '$parent.title', 'route' => 'app_home_article', 'routeParameters' => ['slug']],
     ])]
     public function show($slug, ArticleRepository $articleRepository): Response
