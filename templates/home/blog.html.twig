@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block meta_description %}Blog de Spaarple.{% endblock %}
+
+{% block body %}
+    <div class="grid md:grid-cols-6 gap-4">
+        <div class="col-start-2 col-span-4">
+            <div class="flex min-h-full flex-col justify-center mt-20">
+                <div class="space-y-12">
+                    {{ slope_it_breadcrumb() }}
+                    <div class="border-b border-gray-900/10 pb-12 text-center">
+                        <h1 class="lg:text-display-1xl md:text-display-xl text-display-md font-semibold pb-10">
+                            Découvrez notre Blog
+                        </h1>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">
+                            We use an agile approach to test assumptions and connect with the needs of your audience early and often.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-white dark:bg-gray-900 mt-20">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div class="grid gap-8 lg:grid-cols-2">
+                {% for article in articles %}
+                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div class="flex justify-between items-center mb-5 text-gray-500">
+                      <span style="background-color: {{ article.category.color }}"
+                            class="text-blue-50 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
+                          {{ article.category }}
+                      </span>
+                      <span class="text-sm">{{ article.date|date('d/m/y') }}</span>
+                    </div>
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ article.title }}</h2>
+                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+                        {{ article.content|striptags|slice(0, 300) }}...
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <a href="{{ path('app_home_article', {'slug': article.slug}) }}"
+                           class="inline-flex items-center font-medium text-neutral-700 dark:text-neutral-700 hover:underline">
+                            Lire la suite
+                            <svg class="ml-2 w-4 h-4"
+                                 fill="currentColor"
+                                 viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

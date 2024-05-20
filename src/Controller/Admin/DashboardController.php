@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\Users\UserCrudController;
+use App\Entity\Article;
 use App\Entity\BulkContact;
+use App\Entity\Category;
 use App\Entity\Contact;
 use App\Entity\Estimate;
 use App\Entity\EstimateData;
@@ -78,6 +80,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Administrateurs', null, UserAdministrator::class),
             MenuItem::linkToCrud('Clients', null, UserClient::class),
         ])->setBadge($this->userRepository->count([]), 'primary');
+
+        yield MenuItem::subMenu('Blog', 'fas fa-newspaper')->setSubItems([
+            MenuItem::linkToCrud('Articles', null, Article::class),
+            MenuItem::linkToCrud('Catégories', null, Category::class),
+        ]);
 
         yield MenuItem::subMenu('Estimations', 'fa-solid fa-coins')->setSubItems([
             MenuItem::linkToCrud('Données des estimations', null, EstimateData::class),

@@ -54,6 +54,10 @@ Encore
         to: 'images/[path][name].[hash:8].[ext]',
     })
 
+    .copyFiles({
+        from: './assets/images/article',
+        to: 'images/article/[path][name].[hash:8].[ext]',
+    })
     // enables Sass/SCSS support
     //.enableSassLoader()
 

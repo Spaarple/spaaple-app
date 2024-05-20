@@ -16,33 +16,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BulkContactRepository extends ServiceEntityRepository
 {
+    /**
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, BulkContact::class);
     }
-
-    //    /**
-    //     * @return BulkContact[] Returns an array of BulkContact objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('b.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?BulkContact
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }
