@@ -78,7 +78,7 @@ class HomeController extends AbstractController
         });
 
         $similarArticles = array_slice($similarArticles, 0, 4);
-;
+
         return $this->render('home/article.html.twig',[
             'article' => $article,
             'similar_articles' => $similarArticles,
