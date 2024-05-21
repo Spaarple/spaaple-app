@@ -8,8 +8,8 @@ use App\Entity\User\AbstractUser;
 use App\Entity\User\UserClient;
 use App\Form\RegisterType;
 use App\Repository\User\AbstractUserRepository;
-use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Prime\FlasherInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -26,13 +26,13 @@ class RegisterController extends AbstractController
 {
     /**
      * @param EntityManagerInterface $entityManager
-     * @param AlertServiceInterface $alertService
+     * @param FlasherInterface $flasher
      * @param MailerInterface $mailer
      * @param ParameterBagInterface $parameterBag
      */
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
-        private readonly AlertServiceInterface $alertService,
+        private readonly FlasherInterface $flasher,
         private readonly MailerInterface $mailer,
         private readonly ParameterBagInterface $parameterBag,
     ) {
@@ -65,7 +65,7 @@ class RegisterController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $this->alertService->success('Vous êtes bien inscrit ! Vérifier votre boîte mail.');
+            $this->flasher->success('Vous êtes bien inscrit ! Vérifier votre boîte mail.');
 
             $this->sendConfirmationEmail($user);
 
@@ -107,7 +107,7 @@ class RegisterController extends AbstractController
         $client = $abstractUserRepository->find(['id' => $request->get('id')]);
 
         if ($client === null) {
-            $this->alertService->error('Utilisateur non trouvé');
+            $this->flasher->error('Utilisateur non trouvé');
 
             return $this->redirectToRoute('app_register');
         }
@@ -116,7 +116,7 @@ class RegisterController extends AbstractController
         $this->entityManager->persist($client);
         $this->entityManager->flush();
 
-        $this->alertService->success('Confirmé ! Connectez-vous.');
+        $this->flasher->success('Confirmé ! Connectez-vous.');
 
         return $this->render('register/confirm_account.html.twig');
     }

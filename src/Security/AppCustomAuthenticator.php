@@ -4,8 +4,8 @@ namespace App\Security;
 
 use App\Entity\User\AbstractUser;
 use App\Enum\Role;
-use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Prime\FlasherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,12 +28,12 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
-     * @param AlertServiceInterface $alertService
+     * @param FlasherInterface $flasher
      * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator,
-        private readonly AlertServiceInterface $alertService,
+        private readonly FlasherInterface $flasher,
         private readonly EntityManagerInterface $entityManager,
     )
     {
@@ -74,7 +74,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        $this->alertService->success('Connexion réussie');
+        $this->flasher->success('Connexion réussie');
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }

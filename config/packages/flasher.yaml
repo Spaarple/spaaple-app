@@ -1,0 +1,15 @@
+flasher:
+    default: notyf
+
+    plugins:
+        notyf:
+            options:
+                duration: 20000
+                position:
+                    x: right
+                    y: top
+                types:
+                    - { type: success, background: '#4C956C' }
+                    - { type: error, background: '#EF233C' }
+                    - { type: warning, background: '#FAA307' }
+                    - { type: info, background: '#83C5BE' }
