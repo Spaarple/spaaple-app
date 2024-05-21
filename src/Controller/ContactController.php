@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User\UserClient;
 use App\Form\ContactType;
-use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Prime\FlasherInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -22,13 +22,13 @@ class ContactController extends AbstractController
 {
     /**
      * @param EntityManagerInterface $entityManager
-     * @param AlertServiceInterface $alertService
+     * @param FlasherInterface $flasher
      * @param MailerInterface $mailer
      * @param ParameterBagInterface $parameterBag
      */
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
-        private readonly AlertServiceInterface $alertService,
+        private readonly FlasherInterface $flasher,
         private readonly MailerInterface $mailer,
         private readonly ParameterBagInterface $parameterBag,
     )
@@ -66,7 +66,7 @@ class ContactController extends AbstractController
 
             $this->mailer->send($emailContact);
 
-            $this->alertService->success('Message envoyé avec succès !');
+            $this->flasher->success('Message envoyé avec succès !');
 
             return $this->redirectToRoute('app_home_index');
         }
@@ -112,7 +112,7 @@ class ContactController extends AbstractController
 
             $this->mailer->send($emailContact);
 
-            $this->alertService->success('Message envoyé avec succès !');
+            $this->flasher->success('Message envoyé avec succès !');
 
             return $this->redirectToRoute('app_profile_index');
         }

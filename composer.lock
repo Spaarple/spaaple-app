@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2e11ece16ca634ddb034de9e11edc97",
+    "content-hash": "6c11cf021b3e540b64f0b3a9a7d7311a",
     "packages": [
         {
             "name": "composer/semver",
@@ -1575,24 +1575,32 @@
         },
         {
             "name": "php-flasher/flasher",
-            "version": "v1.15.14",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-flasher/flasher.git",
-                "reference": "33ae74e73f62814fff4e78e78f912d9b6ddf82d0"
+                "reference": "28bee5bc30efa372d0879447941201183e2ec6ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-flasher/flasher/zipball/33ae74e73f62814fff4e78e78f912d9b6ddf82d0",
-                "reference": "33ae74e73f62814fff4e78e78f912d9b6ddf82d0",
+                "url": "https://api.github.com/repos/php-flasher/flasher/zipball/28bee5bc30efa372d0879447941201183e2ec6ff",
+                "reference": "28bee5bc30efa372d0879447941201183e2ec6ff",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "php": ">=8.2"
             },
             "type": "library",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
             "autoload": {
                 "files": [
+                    "functions.php",
                     "helpers.php"
                 ],
                 "psr-4": {
@@ -1605,39 +1613,25 @@
             ],
             "authors": [
                 {
-                    "name": "Younes KHOUBZA",
-                    "email": "younes.khoubza@gmail.com",
-                    "homepage": "https://www.linkedin.com/in/younes-khoubza",
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
                     "role": "Developer"
                 }
             ],
-            "description": "PHPFlasher - A powerful & easy-to-use package for adding flash messages to Laravel or Symfony projects. Provides feedback to users, improves engagement & enhances user experience. Intuitive design for beginners & experienced developers. A reliable, flexible solution.",
+            "description": "The foundational PHP library for PHPFlasher, enabling the creation of framework-agnostic flash notifications. Ideal for building custom integrations or for use in PHP projects.",
             "homepage": "https://php-flasher.io",
             "keywords": [
-                "custom-adapter",
-                "dark-mode",
-                "desktop-notifications",
-                "flash-messages",
+                "custom-integrations",
+                "flash-notifications",
+                "flasher-core",
                 "framework-agnostic",
-                "javascript",
-                "laravel",
-                "notification-system",
-                "noty",
-                "notyf",
-                "php",
-                "php-flasher",
-                "phpstorm-auto-complete",
-                "pnotify",
-                "rtl",
-                "sweetalert",
-                "symfony",
-                "toastr",
-                "user-experience",
-                "user-feedback",
-                "yoeunes"
+                "open-source",
+                "php"
             ],
             "support": {
-                "source": "https://github.com/php-flasher/flasher/tree/v1.15.14"
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
             },
             "funding": [
                 {
@@ -1661,29 +1655,30 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-12-16T17:11:36+00:00"
+            "time": "2024-05-05T18:56:13+00:00"
         },
         {
             "name": "php-flasher/flasher-notyf",
-            "version": "v1.15.14",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-flasher/flasher-notyf.git",
-                "reference": "f454aea626cdccf0191ae914e7f74fb4aa3cabdd"
+                "reference": "6500156a18909a757a532fa0e63177ce156f8eb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-flasher/flasher-notyf/zipball/f454aea626cdccf0191ae914e7f74fb4aa3cabdd",
-                "reference": "f454aea626cdccf0191ae914e7f74fb4aa3cabdd",
+                "url": "https://api.github.com/repos/php-flasher/flasher-notyf/zipball/6500156a18909a757a532fa0e63177ce156f8eb4",
+                "reference": "6500156a18909a757a532fa0e63177ce156f8eb4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3",
-                "php-flasher/flasher": "^1.15.14"
+                "php": ">=8.2",
+                "php-flasher/flasher": "^2.0"
             },
             "type": "library",
             "autoload": {
                 "files": [
+                    "functions.php",
                     "helpers.php"
                 ],
                 "psr-4": {
@@ -1696,39 +1691,30 @@
             ],
             "authors": [
                 {
-                    "name": "Younes KHOUBZA",
-                    "email": "younes.khoubza@gmail.com",
-                    "homepage": "https://www.linkedin.com/in/younes-khoubza",
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
                     "role": "Developer"
                 }
             ],
             "description": "PHPFlasher - A powerful & easy-to-use package for adding flash messages to Laravel or Symfony projects. Provides feedback to users, improves engagement & enhances user experience. Intuitive design for beginners & experienced developers. A reliable, flexible solution.",
             "homepage": "https://php-flasher.io",
             "keywords": [
-                "custom-adapter",
-                "dark-mode",
-                "desktop-notifications",
+                "customizable-alerts-php",
                 "flash-messages",
-                "framework-agnostic",
-                "javascript",
-                "laravel",
-                "notification-system",
-                "noty",
-                "notyf",
-                "php",
-                "php-flasher",
-                "phpstorm-auto-complete",
-                "pnotify",
-                "rtl",
-                "sweetalert",
-                "symfony",
-                "toastr",
-                "user-experience",
-                "user-feedback",
-                "yoeunes"
+                "interactive-web-notifications",
+                "laravel-notification",
+                "php-messaging-library",
+                "php-notification-system",
+                "php-user-interface",
+                "symfony-notification",
+                "user-engagement-php",
+                "user-feedback-tools",
+                "web-application-notifications"
             ],
             "support": {
-                "source": "https://github.com/php-flasher/flasher-notyf/tree/v1.15.14"
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
             },
             "funding": [
                 {
@@ -1752,26 +1738,26 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-03-16T15:25:14+00:00"
+            "time": "2024-05-05T18:44:39+00:00"
         },
         {
             "name": "php-flasher/flasher-notyf-symfony",
-            "version": "v1.15.14",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-flasher/flasher-notyf-symfony.git",
-                "reference": "a6133e7d3df284fba95685a938790750bf97f339"
+                "reference": "804c195ba9d819b989d3dd65494917132ac6c7e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-flasher/flasher-notyf-symfony/zipball/a6133e7d3df284fba95685a938790750bf97f339",
-                "reference": "a6133e7d3df284fba95685a938790750bf97f339",
+                "url": "https://api.github.com/repos/php-flasher/flasher-notyf-symfony/zipball/804c195ba9d819b989d3dd65494917132ac6c7e6",
+                "reference": "804c195ba9d819b989d3dd65494917132ac6c7e6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3",
-                "php-flasher/flasher-notyf": "^1.15.14",
-                "php-flasher/flasher-symfony": "^1.15.14"
+                "php": ">=8.2",
+                "php-flasher/flasher-notyf": "^2.0",
+                "php-flasher/flasher-symfony": "^2.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1785,39 +1771,26 @@
             ],
             "authors": [
                 {
-                    "name": "Younes KHOUBZA",
-                    "email": "younes.khoubza@gmail.com",
-                    "homepage": "https://www.linkedin.com/in/younes-khoubza",
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
                     "role": "Developer"
                 }
             ],
-            "description": "PHPFlasher - A powerful & easy-to-use package for adding flash messages to Laravel or Symfony projects. Provides feedback to users, improves engagement & enhances user experience. Intuitive design for beginners & experienced developers. A reliable, flexible solution.",
+            "description": "Adopt Notyf's simple flash notifications in Symfony projects with PHPFlasher. Streamline user notifications in Symfony with Notyf's elegant simplicity.",
             "homepage": "https://php-flasher.io",
             "keywords": [
-                "custom-adapter",
-                "dark-mode",
-                "desktop-notifications",
-                "flash-messages",
-                "framework-agnostic",
-                "javascript",
-                "laravel",
-                "notification-system",
-                "noty",
+                "flash-notifications",
+                "minimalist-notifications",
                 "notyf",
-                "php",
-                "php-flasher",
-                "phpstorm-auto-complete",
-                "pnotify",
-                "rtl",
-                "sweetalert",
+                "open-source",
+                "phpflasher",
                 "symfony",
-                "toastr",
-                "user-experience",
-                "user-feedback",
-                "yoeunes"
+                "user-feedback"
             ],
             "support": {
-                "source": "https://github.com/php-flasher/flasher-notyf-symfony/tree/v1.15.14"
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
             },
             "funding": [
                 {
@@ -1841,33 +1814,33 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-03-16T15:25:14+00:00"
+            "time": "2024-05-05T18:56:13+00:00"
         },
         {
             "name": "php-flasher/flasher-symfony",
-            "version": "v1.15.14",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-flasher/flasher-symfony.git",
-                "reference": "9e7ebc778d3a7507a44743464d17be72edb441dd"
+                "reference": "ef1299cc7df45d23ea95739505ddedcf0bf665ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-flasher/flasher-symfony/zipball/9e7ebc778d3a7507a44743464d17be72edb441dd",
-                "reference": "9e7ebc778d3a7507a44743464d17be72edb441dd",
+                "url": "https://api.github.com/repos/php-flasher/flasher-symfony/zipball/ef1299cc7df45d23ea95739505ddedcf0bf665ab",
+                "reference": "ef1299cc7df45d23ea95739505ddedcf0bf665ab",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3",
-                "php-flasher/flasher": "^1.15.14",
-                "symfony/config": "^2.0 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
-                "symfony/console": "^2.0 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
-                "symfony/dependency-injection": "^2.0 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
-                "symfony/http-kernel": "^2.0 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "php": ">=8.2",
+                "php-flasher/flasher": "^2.0",
+                "symfony/config": "^7.0",
+                "symfony/console": "^7.0",
+                "symfony/dependency-injection": "^7.0",
+                "symfony/http-kernel": "^7.0"
             },
             "suggest": {
                 "symfony/translation": "To translate flash messages, title and presets",
-                "symfony/twig-bundle": "To create custom themes using twig templates"
+                "symfony/ux-twig-component": "To utilize and interact with flash messages components in Twig templates"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1881,39 +1854,25 @@
             ],
             "authors": [
                 {
-                    "name": "Younes KHOUBZA",
-                    "email": "younes.khoubza@gmail.com",
-                    "homepage": "https://www.linkedin.com/in/younes-khoubza",
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
                     "role": "Developer"
                 }
             ],
-            "description": "PHPFlasher - A powerful & easy-to-use package for adding flash messages to Laravel or Symfony projects. Provides feedback to users, improves engagement & enhances user experience. Intuitive design for beginners & experienced developers. A reliable, flexible solution.",
+            "description": "Integrate flash notifications into Symfony projects effortlessly with PHPFlasher. Improve user experience and application feedback loops easily.",
             "homepage": "https://php-flasher.io",
             "keywords": [
-                "custom-adapter",
-                "dark-mode",
-                "desktop-notifications",
-                "flash-messages",
-                "framework-agnostic",
-                "javascript",
-                "laravel",
-                "notification-system",
-                "noty",
-                "notyf",
+                "flash-notifications",
+                "open-source",
                 "php",
-                "php-flasher",
-                "phpstorm-auto-complete",
-                "pnotify",
-                "rtl",
-                "sweetalert",
+                "phpflasher",
                 "symfony",
-                "toastr",
-                "user-experience",
-                "user-feedback",
-                "yoeunes"
+                "user-feedback"
             ],
             "support": {
-                "source": "https://github.com/php-flasher/flasher-symfony/tree/v1.15.14"
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
             },
             "funding": [
                 {
@@ -1937,7 +1896,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-03-16T15:25:14+00:00"
+            "time": "2024-05-05T18:56:13+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

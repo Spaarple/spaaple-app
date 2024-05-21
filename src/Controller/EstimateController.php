@@ -10,8 +10,8 @@ use App\Enum\CMS;
 use App\Enum\Complexity;
 use App\Enum\NumberPage;
 use App\Form\EstimateYoursSiteType;
-use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Prime\FlasherInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -27,12 +27,12 @@ use Symfony\Component\Security\Http\Attribute\CurrentUser;
 class EstimateController extends AbstractController
 {
     /**
-     * @param AlertServiceInterface $alertService
+     * @param FlasherInterface $flasher
      * @param ParameterBagInterface $parameterBag
      * @param MailerInterface $mailer
      */
     public function __construct(
-        private readonly AlertServiceInterface $alertService,
+        private readonly FlasherInterface $flasher,
         private readonly ParameterBagInterface $parameterBag,
         private readonly MailerInterface $mailer,
     )
@@ -76,7 +76,7 @@ class EstimateController extends AbstractController
             $entityManager->persist($estimate);
             $entityManager->flush();
 
-            $this->alertService->success('Estimation enregistrée avec succès !');
+            $this->flasher->success('Estimation enregistrée avec succès !');
 
             return $this->redirectToRoute('app_home_index');
         }

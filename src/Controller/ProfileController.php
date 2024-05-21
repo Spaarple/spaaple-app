@@ -7,8 +7,8 @@ use App\Form\EditPasswordType;
 use App\Form\EditProfileType;
 use App\Form\Model\ChangePassword;
 use App\Repository\EstimateRepository;
-use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Prime\FlasherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,11 +22,11 @@ class ProfileController extends AbstractController
 {
     /**
      * @param EntityManagerInterface $entityManager
-     * @param AlertServiceInterface $alertService
+     * @param FlasherInterface $flasher
      */
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
-        private readonly AlertServiceInterface $alertService
+        private readonly FlasherInterface $flasher,
     )
     {}
 
@@ -48,7 +48,7 @@ class ProfileController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $this->alertService->success('Vos informations ont été mises à jour.');
+            $this->flasher->success('Vos informations ont été mises à jour.');
 
             return $this->redirectToRoute('app_profile_index');
         }
@@ -81,7 +81,7 @@ class ProfileController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $this->alertService->success('Votre mot de passe a été mis à jour.');
+            $this->flasher->success('Votre mot de passe a été mis à jour.');
 
             return $this->redirectToRoute('app_profile_index');
         }

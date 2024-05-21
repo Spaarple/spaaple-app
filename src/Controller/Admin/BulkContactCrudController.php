@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\BulkContact;
-use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -13,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Flasher\Prime\FlasherInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -22,12 +22,12 @@ use Symfony\Component\Mime\Address;
 class BulkContactCrudController extends AbstractCrudController
 {
     /**
-     * @param AlertServiceInterface $alertService
+     * @param FlasherInterface $flasher
      * @param MailerInterface $mailer
      * @param ParameterBagInterface $parameterBag
      */
     public function __construct(
-        private readonly AlertServiceInterface $alertService,
+        private readonly FlasherInterface $flasher,
         private readonly MailerInterface $mailer,
         private readonly ParameterBagInterface $parameterBag,
     )
@@ -106,7 +106,7 @@ class BulkContactCrudController extends AbstractCrudController
             $this->mailer->send($email);
         }
 
-        $this->alertService->success('Message envoyé avec succès !');
+        $this->flasher->success('Message envoyé avec succès !');
 
         parent::persistEntity($entityManager, $entityInstance);
     }
