@@ -140,18 +140,19 @@ class ResetPasswordController extends AbstractController
     }
 
     /**
+     * @param string $emailFormData
+     * @param MailerInterface $mailer
+     * @return RedirectResponse
      * @throws TransportExceptionInterface
      */
     private function processSendingPasswordResetEmail(
         string $emailFormData,
-        MailerInterface $mailer,
-        TranslatorInterface $translator
+        MailerInterface $mailer
     ): RedirectResponse {
         $user = $this->entityManager->getRepository(AbstractUser::class)->findOneBy([
             'email' => $emailFormData,
         ]);
 
-        // Do not reveal whether a user account was found or not.
         if (!$user) {
             return $this->redirectToRoute('app_check_email');
         }
@@ -184,7 +185,6 @@ class ResetPasswordController extends AbstractController
         ;
 
         $mailer->send($email);
-
         $this->setTokenObjectInSession($resetToken);
 
         return $this->redirectToRoute('app_check_email');
