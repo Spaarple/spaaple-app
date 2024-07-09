@@ -78,7 +78,9 @@ jobs:
           composer install -o
           php bin/console doctrine:database:drop --force
           php bin/console doctrine:database:create
+          php bin/console doctrine:schema:update --dump-sql
           php bin/console doctrine:migration:migrate --no-interaction -all-or-nothing
+          php bin/console doctrine:schema:update --force
 
       - name: Validate schema
         run: php bin/console doctrine:schema:validate
