@@ -18,6 +18,5 @@
             color:red!important;
         }
     }
-    @layer components {
-    }
+    @layer components {}
 }
