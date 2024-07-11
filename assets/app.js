@@ -1,6 +1,7 @@
-import './styles/app.css';
 import './utils';
 import './lordicon';
+
+import './styles/app.css';
 
 // Scroll event listener to add shadow to header
 window.addEventListener('scroll', function() {
