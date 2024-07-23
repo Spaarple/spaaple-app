@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spaarple Agence web spécialisée en création et développement d'applications web{% endblock %}
+
+{% block meta_description %}Choisir une offre qui vous corresponds pour la création de votre site web{% endblock %}
+
+{% block body %}
+    <div class="mt-20 relative isolate overflow-hidden py-24 sm:py-32 bg-secondary-200">
+        <img src="{{ asset('build/images/background-offer-page.png')}}"
+             alt="Image sur fond blanc avec des stries de couleur noires"
+             class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center hidden lg:block"/>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+                <h1 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">
+                    Pack Pro
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-neutral-900">
+                    Un site web professionnel optimisé avec un support client 8/5, incluant
+                    une formation utilisateur, un audit gratuit, l’intégration des réseaux sociaux,
+                    et une application sécurisée.
+                </p>
+            </div>
+            <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+                <div class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-neutral-900 sm:grid-cols-2 md:flex lg:gap-x-10">
+                    <a href="#">Site Internet Professionnel <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#">SEO Friendly <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#">Intégration réseaux sociaux <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#">Sécurité accrue <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+                <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+                    <dt class="text-base leading-7 text-gray-600">1000€ d’économie immédiate (2000€ au lieu de 3000€).</dt>
+                    <dd class="order-first lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">1000€</dd>
+                </div>
+                <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+                    <dt class="text-base leading-7 text-gray-600">Support client disponible 8/5 pour une tranquillité d’esprit totale.</dt>
+                    <dd class="order-first lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">8/5</dd>
+                </div>
+                <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+                    <dt class="text-base leading-7 text-gray-600">3 Bonus exclusifs, 1 audit offert, intégration des réseaux sociaux et application sécurisée incluses.</dt>
+                    <dd class="order-first lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">Bonus</dd>
+                </div>
+            </dl>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <button type="submit" class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                Parlons-en Ensemble
+            </button>
+        </div>
+    </div>
+
+    <div class="overflow-hidden bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+                <div class="lg:pr-8 lg:pt-4">
+                    <div class="lg:max-w-lg">
+                        <h2 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">Plus qu’une présence en ligne</h2>
+                        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            Transformez votre présence en ligne en une véritable force d’engagement.
+                        </p>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">
+                            Créez un site web professionnel avec support et formation incluse.
+                            Profitez de l’intégration des réseaux sociaux et d’une application sécurisée pour maximiser votre visibilité en ligne.
+                        </p>
+                        <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-900">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-neutral-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                                    </svg>
+                                    Push to deploy.
+                                </dt>
+                                <dd class="inline">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                            </div>
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-900">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-neutral-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                    </svg>
+                                    SSL certificates.
+                                </dt>
+                                <dd class="inline">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</dd>
+                            </div>
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-900">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-neutral-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
+                                        <path fill-rule="evenodd" d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z" clip-rule="evenodd" />
+                                    </svg>
+                                    Database backups.
+                                </dt>
+                                <dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+                <img src="{{ asset('build/images/site-internet-preview-drawing.png') }}"
+                     alt="Croquis de page internet"
+                     class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0">
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-10">
+            <button type="submit" class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2 items-center justify-center">
+                Parlons-en Ensemble
+            </button>
+        </div>
+    </div>
+
+    <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
+        <h2 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">Ce qu'on propose</h2>
+        <p class="mb-12 text-lg text-neutral-900">Découvrez les avantages exclusifs de notre Pack Pro pour maximiser votre impact numérique.</p>
+        <div class="w-full">
+            <div class="flex flex-col w-full mb-10 sm:flex-row">
+                <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div class="relative h-full ml-0 mr-0 sm:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center -mt-1">
+                                <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">1 Audit de votre site</h3>
+                            </div>
+                            <p class="mt-3 mb-1 text-xs font-medium text-neutral-900 uppercase">------------</p>
+                            <p class="mb-2 text-gray-600">
+                                Recevez un audit gratuit pour évaluer et optimiser la performance de votre site.
+                                Identifiez les points forts et les axes d’amélioration pour un site web toujours plus efficace.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <div class="relative h-full ml-0 md:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center -mt-1">
+                                <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Sécurité avant tout</h3>
+                            </div>
+                            <p class="mt-3 mb-1 text-xs font-medium text-neutral-900 uppercase">------------</p>
+                            <p class="mb-2 text-gray-600">
+                                Assurez la protection de votre site avec notre expertise en conception numérique.
+                                Protégez vos données et offrez une expérience utilisateur sûre et fiable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col w-full mb-5 sm:flex-row">
+                <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div class="relative h-full ml-0 mr-0 sm:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center -mt-1">
+                                <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Intégration de vos réseaux sociaux</h3>
+                            </div>
+                            <p class="mt-3 mb-1 text-xs font-medium text-neutral-900 uppercase">------------</p>
+                            <p class="mb-2 text-gray-600">
+                                En intégrant vos réseaux sociaux directement à votre site web, vous pouvez augmenter
+                                votre portée, engager davantage vos visiteurs, et faciliter le partage de votre contenu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div class="relative h-full ml-0 mr-0 sm:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center -mt-1">
+                                <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">SEO, référencement web</h3>
+                            </div>
+                            <p class="mt-3 mb-1 text-xs font-medium text-neutral-900 uppercase">------------</p>
+                            <p class="mb-2 text-gray-600">
+                                Nous optimisons votre site avec un SEO de base pour améliorer votre visibilité sur les moteurs de recherche.
+                                Attirez plus de visiteurs et augmentez votre audience grâce à un meilleur référencement web.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <div class="relative h-full ml-0 md:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center -mt-1">
+                                <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Support & formation</h3>
+                            </div>
+                            <p class="mt-3 mb-1 text-xs font-medium text-neutral-900 uppercase">------------</p>
+                            <p class="mb-2 text-gray-600">
+                                Nous offrons un support client disponible 8/5 pour répondre à toutes vos questions et résoudre vos problèmes.
+                                De plus, nous vous fournissons une formation complète pour vous assurer une utilisation optimale de votre site web.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ render(controller('App\\Controller\\ContactController::index')) }}
+
+{% endblock %}
