@@ -1,10 +1,6 @@
-//import './bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
+import './utils';
+import './lordicon';
+
 import './styles/app.css';
 
 // Scroll event listener to add shadow to header

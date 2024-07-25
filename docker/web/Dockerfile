@@ -1,6 +1,5 @@
 FROM php:8.3-apache-bullseye
 
-# Set working directory
 WORKDIR /var/www
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \

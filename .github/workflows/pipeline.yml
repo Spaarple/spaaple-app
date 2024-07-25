@@ -1,11 +1,45 @@
-name: CI
+name: CI/CD Pipeline
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - 'develop'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
-  build:
+  security-checker:
     runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: exif, mysqli, pdo, pdo_mysql, zip, gd, http
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y curl git libzip-dev libwebp-dev libjpeg-dev libpng-dev libxpm-dev
+          curl -sSk https://getcomposer.org/installer | php -- --disable-tls && sudo mv composer.phar /usr/local/bin/composer
+          composer install -o
+
+      - name: Install PHP Security Checker
+        run: |
+          curl -o /tmp/security_checker -L "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.5/local-php-security-checker_2.0.5_linux_amd64"
+          sudo mv /tmp/security_checker /usr/bin/local-php-security-checker
+          sudo chmod +x /usr/bin/local-php-security-checker
+
+      - name: Run security check
+        run: local-php-security-checker --path=./composer.lock
+
+  doctrine-schema-validate:
+    needs: security-checker
+    runs-on: ubuntu-latest
     services:
       mysql:
         image: mysql:5.7
@@ -14,49 +48,75 @@ jobs:
           MYSQL_DATABASE: spaarple
           MYSQL_USER: spaarple
           MYSQL_PASSWORD: spaarple
-          DATABASE_URL: 'mysql://root:toor@127.0.0.1:3306/spaarple?serverVersion=5.7.43&charset=utf8mb4'
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+          --publish=3306:3306
+          -e MYSQL_ROOT_PASSWORD=toor
+          -e MYSQL_DATABASE=spaarple
+          -e MYSQL_USER=spaarple
+          -e MYSQL_PASSWORD=spaarple
+    env:
+      DATABASE_URL: 'mysql://root:toor@127.0.0.1:3306/spaarple?serverVersion=5.7&charset=utf8mb4'
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Setup PHP
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: exif, mysqli, pdo, pdo_mysql, zip, gd
-          tools: composer:v2
+          extensions: exif, mysqli, pdo, pdo_mysql, zip, gd, http
 
       - name: Install dependencies
-        run: composer install -o
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-
-      - name: Security checker
         run: |
-          curl -o /tmp/security_checker -L "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.5/local-php-security-checker_2.0.5_linux_amd64"
-          sudo mv /tmp/security_checker /usr/local/bin/local-php-security-checker
-          sudo chmod +x /usr/local/bin/local-php-security-checker
-          local-php-security-checker --path=./composer.lock
-
-      - name: Doctrine schema validate
-        env:
-          DATABASE_URL: 'mysql://root:toor@127.0.0.1:3306/spaarple?serverVersion=5.7.43&charset=utf8mb4'
-        run: |
+          sudo apt-get update && sudo apt-get install -y curl git libzip-dev libwebp-dev libjpeg-dev libpng-dev libxpm-dev
+          curl -sSk https://getcomposer.org/installer | php -- --disable-tls && sudo mv composer.phar /usr/local/bin/composer
+          composer install -o
           php bin/console doctrine:database:drop --force
           php bin/console doctrine:database:create
-          php bin/console doctrine:migration:migrate --no-interaction
-          php bin/console doctrine:migrations:sync-metadata-storage
+          php bin/console doctrine:schema:update --dump-sql
+          php bin/console doctrine:migration:migrate --no-interaction --all-or-nothing
           php bin/console doctrine:schema:update --force
-          php bin/console doctrine:schema:validate
 
-      - name: Twig lint
+      - name: Validate schema
+        run: php bin/console doctrine:schema:validate
+
+  twig-lint:
+    needs: doctrine-schema-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: exif, mysqli, pdo, pdo_mysql, zip, gd, http
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y curl git libzip-dev libwebp-dev libjpeg-dev libpng-dev libxpm-dev
+          curl -sSk https://getcomposer.org/installer | php -- --disable-tls && sudo mv composer.phar /usr/local/bin/composer
+          composer install -o
+
+      - name: Lint Twig templates
         run: php bin/console lint:twig ./templates
+    continue-on-error: true
+
+  sonarQ:
+    needs: twig-lint
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+        - uses: sonarsource/sonarqube-scan-action@master
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

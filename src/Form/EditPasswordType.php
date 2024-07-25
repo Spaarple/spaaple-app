@@ -25,22 +25,15 @@ class EditPasswordType extends AbstractType
                 'label' => 'Votre ancien mot de passe',
                 'attr' => [
                     'placeholder'=> 'Ancien mot de passe',
-                    'class' => 'form-control'
                 ],
             ])
             ->add('newPassword', RepeatedType::class, [
                 'required' => true,
                 'type' => PasswordType::class,
                 'invalid_message' => 'Mot de passe incorect',
-                'options' => [
-                    'attr' => [
-                        'class' => 'password-field form-control',
-                    ],
-                ],
                 'first_options'  => [
                     'label' => 'Nouveau mot de passe',
                     'attr' => [
-                        'class' => 'password-field form-control',
                         'placeholder'=> 'Votre nouveau mot de passe',
                     ],
                 ],
@@ -48,7 +41,6 @@ class EditPasswordType extends AbstractType
                     'label' => 'Confirmez votre mot de passe',
                     'attr' => [
                         'placeholder'=> 'Confirmez votre mot de passe',
-                        'class' => 'password-field form-control',
                     ],
                 ],
             ])
