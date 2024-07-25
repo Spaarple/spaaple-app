@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /public/
-Disallow: /admin/
-Disallow: /profile/
-
-Sitemap: https://www.spaarple.fr/sitemap.xml
-
