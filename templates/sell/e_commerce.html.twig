@@ -1,0 +1,455 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spaarple Agence web spécialisée en création et développement d'applications web{% endblock %}
+
+{% block meta_description %}Choisir une offre qui vous corresponds pour la création de votre site web{% endblock %}
+
+{% block body %}
+    <div class="mt-20 relative isolate overflow-hidden py-24 sm:py-32 bg-secondary-200">
+        <img src="{{ asset('build/images/background-e-commerce-master.png')}}"
+             alt="Image sur fond blanc avec des stries de couleur noires"
+             class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center hidden lg:block"/>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+                <h1 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">
+                    E-Com Master
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-neutral-900">
+                    Lancez-vous avec une boutique en ligne qui allie performance, sécurité et support exceptionnel.
+                    Faites le choix de la réussite avec notre offre complète et adaptée à vos besoins.
+                </p>
+                <a href="https://fr.trustpilot.com/review/spaarple.fr" class="flex items-center my-5">
+                    <div>
+                        <p>Nos avis</p>
+                    </div>
+                    <div class="ml-2">
+                        <img src="{{ asset('build/images/trustpilot-icon.svg') }}" alt="Icon TrustPilot"
+                            height=120" width="120">
+                    </div>
+                </a>
+                <div class="flex flex-col items-start mt-10">
+                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2">
+                        Parlons-en Ensemble
+                    </button>
+                </div>
+            </div>
+            <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+                <div class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-neutral-900 sm:grid-cols-2 md:flex lg:gap-x-10">
+                    <a href="#">Site Internet Professionnel <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#">SEO Friendly <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#">Intégration réseaux sociaux <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#">Sécurité accrue <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# PRESENTATION #}
+    <section class="bg-white dark:bg-gray-900">
+        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+            <div class="mt-4 md:mt-0">
+                <h2 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">
+                    Une boutique en ligne performante
+                </h2>
+                <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+                <div class="flex flex-col items-start mt-10">
+                    <button class="transform hover:scale-110 transition-transform duration-200 hover:bg-neutral-800 text-body-sm font-semibold text-white bg-neutral-900
+                        py-4 pl-5 pr-4 rounded-full flex flex-row gap-2">
+                        Parlons-en Ensemble
+                    </button>
+                </div>
+                <a href="#" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+                    Get started
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+            <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+        </div>
+    </section>
+
+    {# FAQ 1 #}
+    <section class="bg-white dark:bg-gray-900 sm:p-2">
+        <h3 class="lg:text-display-md md:text-display-lg text-display-md font-semibold text-center">A propos d'Ecom Master</h3>
+        <p class="text-center mt-2">helps you connect with friends and communities of people</p>
+        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+            <div class="mt-4 md:mt-0">
+                <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                    <h2 id="accordion-flush-heading-1">
+                        <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                            <span>What is Flowbite?</span>
+                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                            </svg>
+                        </button>
+                    </h2>
+                    <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                            <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                        </div>
+                    </div>
+                    <h2 id="accordion-flush-heading-2">
+                        <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                            <span>Is there a Figma file available?</span>
+                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                            </svg>
+                        </button>
+                    </h2>
+                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                            <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                        </div>
+                    </div>
+                    <h2 id="accordion-flush-heading-2">
+                        <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                            <span>Is there a Figma file disabled?</span>
+                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                            </svg>
+                        </button>
+                    </h2>
+                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                            <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                <h2 id="accordion-flush-heading-1">
+                    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                        <span>What is Flowbite?</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-2">
+                    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                        <span>Is there a Figma file available?</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-3">
+                    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
+                        <span>What are the differences between Flowbite and Tailwind UI?</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                        <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
+                            <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                            <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# GRID #}
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl">
+        <h2 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">Ce qu'on propose</h2>
+        <p class="mb-12 text-lg text-neutral-900">Découvrez les avantages exclusifs de notre Pack Pro pour maximiser votre impact numérique.</p>
+        <div class="w-full">
+            <div class="flex flex-col w-full mb-10 sm:flex-row">
+                <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div class="relative h-full ml-0 mr-0 sm:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center mt-1">
+                                <h3 class="my-2 text-lg font-bold text-gray-800">1 Audit de votre site</h3>
+                            </div>
+                            <div class="m-7"></div>
+                            <p class="mb-2 text-gray-600">
+                                Recevez un audit gratuit pour évaluer et optimiser la performance de votre site.
+                                Identifiez les points forts et les axes d’amélioration pour un site web toujours plus efficace.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <div class="relative h-full ml-0 md:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center mt-1">
+                                <h3 class="my-2 text-lg font-bold text-gray-800">Sécurité avant tout</h3>
+                            </div>
+                            <div class="m-7"></div>
+                            <p class="mb-2 text-gray-600 ">
+                                Assurez la protection de votre site avec notre expertise en conception numérique.
+                                Protégez vos données et offrez une expérience utilisateur sûre et fiable.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col w-full mb-5 sm:flex-row">
+                <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div class="relative h-full ml-0 mr-0 sm:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center mt-1">
+                                <h3 class="my-2  text-lg font-bold text-gray-800">Intégration de vos réseaux sociaux</h3>
+                            </div>
+                            <div class="m-7"></div>
+                            <p class="mb-2 text-gray-600">
+                                En intégrant vos réseaux sociaux directement à votre site web, vous pouvez augmenter
+                                votre portée, engager davantage vos visiteurs, et faciliter le partage de votre contenu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+                    <div class="relative h-full ml-0 mr-0 sm:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center mt-1">
+                                <h3 class="my-2 text-lg font-bold text-gray-800">SEO, référencement web</h3>
+                            </div>
+                            <div class="m-7"></div>
+                            <p class="mb-2 text-gray-600">
+                                Nous optimisons votre site avec un SEO de base pour améliorer votre visibilité sur les moteurs de recherche.
+                                Attirez plus de visiteurs et augmentez votre audience grâce à un meilleur référencement web.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <div class="relative h-full ml-0 md:mr-10">
+                        <span class="absolute top-0 left-0 w-full h-full bg-neutral-900 rounded-lg"></span>
+                        <div class="relative h-full p-5 bg-white border-2 border-neutral-900 rounded-lg">
+                            <div class="flex items-center mt-1">
+                                <h3 class="my-2 text-lg font-bold text-gray-800">Support & formation</h3>
+                            </div>
+                            <div class="m-7"></div>
+                            <p class="mb-2 text-gray-600">
+                                Nous offrons un support client disponible 8/5 pour répondre à toutes vos questions et résoudre vos problèmes.
+                                De plus, nous vous fournissons une formation complète pour vous assurer une utilisation optimale de votre site web.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# BLOC IMG #}
+    <section>
+        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+            <div class="mt-4 md:mt-0">
+                <h2 class="lg:text-display-xl md:text-display-xl text-display-md font-semibold pb-2">Votre boutique en ligne, maintenant !</h2>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    Développez votre présence numérique et commencez à générer des revenus.
+                </p>
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Créez une boutique en ligne efficace qui génère des ventes avec support et formation inclus.
+                    Profitez d’une intégration fluide des réseaux sociaux pour attirer plus de clients et d’une application
+                    sécurisée pour assurer des transactions sans faille.
+                </p>
+                <div class="lg:pr-4">
+                    <div class="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
+                        <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-900">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-neutral-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                                    </svg>
+                                    Push to deploy.
+                                </dt>
+                                <dd class="inline">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                            </div>
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-900">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-neutral-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                    </svg>
+                                    SSL certificates.
+                                </dt>
+                                <dd class="inline">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</dd>
+                            </div>
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-900">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-neutral-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
+                                        <path fill-rule="evenodd" d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z" clip-rule="evenodd" />
+                                    </svg>
+                                    Database backups.
+                                </dt>
+                                <dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</dd>
+                            </div>
+                        </dl>
+                        <p class="mt-8">Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=" -mt-12 lg:sticky lg:top-36 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+                <img class="w-full dark:hidden" src="{{ asset('build/images/site-internet-preview-drawing.png') }}" alt="Image">
+            </div>
+        </div>
+    </section>
+
+    {# BIG CTA #}
+    <div class="bg-white">
+        <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+            <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+                <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true">
+                    <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+                    <defs>
+                        <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+                            <stop stop-color="#7775D6" />
+                            <stop offset="1" stop-color="#E935C1" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+                <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                    <h2 class="lg:text-display-md md:text-display-md text-display-md font-semibold pb-2 text-white">Osez vous démarquer</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.</p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                        <a href="#" class=" bg-white px-3.5 py-2.5 text-sm font-semibold rounded-3xl text-gray-900 shadow-sm hover:bg-gray-100
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Je veux vendre dès maintenant</a>
+                    </div>
+                </div>
+                <div class="relative mt-16 h-80 lg:mt-8">
+                    <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+                         src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+                         alt="App screenshot"
+                         width="1824" height="1080">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {# DESCRIPTION LEFT ET RIGHT  === Calendly#}
+    <div class="bg-white">
+        <div class="pt-6">
+            <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+                <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                    <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Basic Tee 6-Pack</h1>
+                </div>
+                <div class="mt-4 lg:row-span-3 lg:mt-0">
+                    <div class="mt-10">
+                        <!-- Début de widget en ligne Calendly -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/bonjour-spaarple/appel-de-mise-en-relation?hide_gdpr_banner=1&primary_color=000000"
+                             style="min-width:320px;height:700px;">
+                        </div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <!-- Fin de widget en ligne Calendly -->
+                    </div>
+                </div>
+                <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+                    <div>
+                        <h3 class="sr-only">Description</h3>
+                        <div class="space-y-6">
+                            <p class="text-base text-gray-900">The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: &quot;Black&quot;. Need to add an extra pop of color to your outfit? Our white tee has you covered.</p>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
+                        <div class="mt-4">
+                            <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
+                                <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
+                                <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
+                                <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
+                                <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <h2 class="text-sm font-medium text-gray-900">Details</h2>
+
+                        <div class="mt-4 space-y-6">
+                            <p class="text-sm text-gray-600">The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming &quot;Charcoal Gray&quot; limited release.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# LIST QUESTION FREQUENTE#}
+    <section class="bg-white dark:bg-gray-900 sm:p-2">
+        <h3 class="lg:text-display-md md:text-display-lg text-display-md font-semibold text-center">
+            Questions fréquemment posées
+        </h3>
+        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-1 sm:py-16 lg:px-6">
+            <div id="accordion-flush"
+                 data-accordion="collapse"
+                 data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                 data-inactive-classes="text-gray-500 dark:text-gray-400">
+                <h2 id="accordion-flush-heading-1">
+                    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                        <span>What is Flowbite?</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-2">
+                    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                        <span>Is there a Figma file available?</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-3">
+                    <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
+                        <span>What are the differences between Flowbite and Tailwind UI?</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+                        <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
+                            <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+                            <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

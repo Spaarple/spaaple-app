@@ -35,6 +35,24 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @return Response
+     */
+    #[Route('/pack-pro', name: '_pack_pro')]
+    public function packPro(): Response
+    {
+        return $this->render('sell/pack_pro.html.twig');
+    }
+
+    /**
+     * @return Response
+     */
+    #[Route('/e-commerce-master', name: '_e_commerce_master')]
+    public function packEcommerce(): Response
+    {
+        return $this->render('sell/e_commerce.html.twig');
+    }
+
+    /**
      * @param ArticleRepository $articleRepository
      * @return Response
      */

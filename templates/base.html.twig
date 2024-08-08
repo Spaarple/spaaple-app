@@ -1,101 +1,108 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="{% block meta_description %}{% endblock %}">
-        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
 
-        <link rel="canonical" href="{{ app.request.uri }}">
-        <link rel="icon" type="image/svg+xml" href="{{ asset('build/images/icons.svg') }}">
+    <link rel="canonical" href="{{ app.request.uri }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('build/images/icons.svg') }}">
 
-        <meta property="og:image" content="{{ asset('build/images/spaarple-preview.png') }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:title" content="Spaarple Agence web spécialisée en création et développement d'applications web" />
-        <meta property="og:locale" content="fr_FR">
-        <meta property="og:description" content="Spaarple Agence web spécialisée en création et développement
+    <meta property="og:image" content="{{ asset('build/images/spaarple-preview.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="Spaarple Agence web spécialisée en création et développement d'applications web" />
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:description" content="Spaarple Agence web spécialisée en création et développement
         d'applications web, nous intervenons sur vos projets web">
 
-        <title>{% block title %}Spaarple{% endblock %}</title>
+    <title>{% block title %}Spaarple{% endblock %}</title>
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 
-        <!-- Matomo -->
-        <script async >
-            var _paq = window._paq = window._paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-            _paq.push(["setCookieDomain", "*.spaarple.fr"]);
-            _paq.push(["setDomains", ["*.spaarple.fr"]]);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-                var u="//82.66.14.102/";
-                _paq.push(['setTrackerUrl', u+'matomo.php']);
-                _paq.push(['setSiteId', '1']);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-            })();
-        </script>
-        <noscript>
-            <p>
-                <img referrerpolicy="no-referrer-when-downgrade"
-                          src="//82.66.14.102/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" />
-            </p>
-        </noscript>
-        <!-- End Matomo Code -->
+    <!-- Matomo -->
+    <script async >
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _paq.push(["setCookieDomain", "*.spaarple.fr"]);
+        _paq.push(["setDomains", ["*.spaarple.fr"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//matomo.spaarple.fr/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript>
+        <p>
+            <img referrerpolicy="no-referrer-when-downgrade"
+                 src="//matomo.spaarple.fr/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" />
+        </p>
+    </noscript>
+    <!-- End Matomo Code -->
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NS4SZPXNWD"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NS4SZPXNWD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-            gtag('config', 'G-NS4SZPXNWD');
-        </script>
-    </head>
+        gtag('config', 'G-NS4SZPXNWD');
+    </script>
+
+    <script>
+        (function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+            a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
+            f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
+        tp('register', 'WWE1FFfheAJCFl2I');
+    </script>
+</head>
 <body>
-    <!-- Google Tag Manager -->
-    <script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!=='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-5C87BZ7Q');</script>
-    <!-- End Google Tag Manager -->
-    {% include '_components/_header.html.twig' %}
-    {% block body %}{% endblock %}
+<!-- Google Tag Manager -->
+<script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!=='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5C87BZ7Q');</script>
+<!-- End Google Tag Manager -->
+{% include '_components/_header.html.twig' %}
+{% block body %}{% endblock %}
 
-    <div id="marketing-banner" tabindex="-1" class="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)]
+<div id="marketing-banner" tabindex="-1" class="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)]
             p-4 -translate-x-1/2 bg-white border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 bottom-6 dark:bg-gray-700 dark:border-gray-600">
-        <div class="flex flex-col items-start mb-3 me-4 md:items-center md:flex-row md:mb-0">
+    <div class="flex flex-col items-start mb-3 me-4 md:items-center md:flex-row md:mb-0">
                     <span class="flex items-center mb-2 border-gray-200 md:pe-4 md:me-4 md:border-e md:mb-0 dark:border-gray-600 mr-2">
                         <img src="{{ asset('build/images/dark-logo.svg') }}" class="" alt="Logo Spaarple" height="125" width="125">
                     </span>
-            <p class="flex items-center font-normal text-gray-500 dark:text-gray-400">
-                Notre site utilise des cookies pour améliorer votre expérience de navigation. En continuant à utiliser notre site, vous consentez à l'utilisation de ces cookies.
-            </p>
-        </div>
-        <div class="flex items-center flex-shrink-0">
-            <a href="#" class="px-5 py-2 me-2 text-xs font-medium text-white bg-secondary-600 rounded-lg hover:bg-success focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                Accepter
-            </a>
-            <button data-dismiss-target="#marketing-banner" type="button"
-                    class="flex-shrink-0 inline-flex justify-center w-7 h-7 items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                </svg>
-                <span class="sr-only">Fermer</span>
-            </button>
-        </div>
+        <p class="flex items-center font-normal text-gray-500 dark:text-gray-400">
+            Notre site utilise des cookies pour améliorer votre expérience de navigation. En continuant à utiliser notre site, vous consentez à l'utilisation de ces cookies.
+        </p>
     </div>
-    {% include '_components/_footer.html.twig' %}
-    </body>
+    <div class="flex items-center flex-shrink-0">
+        <a href="#" class="px-5 py-2 me-2 text-xs font-medium text-white bg-secondary-600 rounded-lg hover:bg-success focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            Accepter
+        </a>
+        <button data-dismiss-target="#marketing-banner" type="button"
+                class="flex-shrink-0 inline-flex justify-center w-7 h-7 items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+            <span class="sr-only">Fermer</span>
+        </button>
+    </div>
+</div>
+{% include '_components/_footer.html.twig' %}
+</body>
 </html>

@@ -5,10 +5,10 @@ services:
     image: 'mysql:5.7'
     platform: linux/amd64
     environment:
-      - 'MYSQL_ROOT_PASSWORD=toor'
-      - 'MYSQL_DATABASE=spaarple'
-      - 'MYSQL_USER=spaarple'
-      - 'MYSQL_PASSWORD=spaarple'
+      - 'MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}'
+      - 'MYSQL_DATABASE=${MYSQL_DATABASE}'
+      - 'MYSQL_USER=${MYSQL_USER}'
+      - 'MYSQL_PASSWORD=${MYSQL_PASSWORD}'
     ports:
       - '3306:3306'
     volumes:
