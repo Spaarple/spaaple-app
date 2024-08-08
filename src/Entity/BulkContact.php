@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\Mail;
 use App\Repository\BulkContactRepository;
 use App\Traits\TimestampableTrait;
 use Doctrine\DBAL\Types\Types;
@@ -25,8 +26,11 @@ class BulkContact
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
-    #[ORM\Column(type: Types::JSON)]
-    private array $email = [];
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $email = null;
+
+    #[ORM\Column(type: Types::STRING, length: 255, enumType: Mail::class)]
+    private ?Mail $expeditor = null;
 
     /**
      * @return Uuid|null
@@ -71,20 +75,47 @@ class BulkContact
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getEmail(): array
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * @param array $email
+     * @param string $email
      * @return $this
      */
-    public function setEmail(array $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEmailArray(): array
+    {
+        return array_map('trim', explode(',', $this->email));
+    }
+
+    /**
+     * @return Mail|null
+     */
+    public function getExpeditor(): ?Mail
+    {
+        return $this->expeditor;
+    }
+
+    /**
+     * @param Mail $expeditor
+     * @return $this
+     */
+    public function setExpeditor(Mail $expeditor): static
+    {
+        $this->expeditor = $expeditor;
 
         return $this;
     }

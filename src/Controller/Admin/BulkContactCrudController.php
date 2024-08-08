@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\BulkContact;
+use App\Enum\Mail;
+use App\Form\Admin\Field\EnumField;
 use App\Service\AlertServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -74,7 +76,9 @@ class BulkContactCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            ArrayField::new('email', 'Destinataires'),
+            EnumField::setEnumClass(Mail::class)::new('expeditor', 'Expéditeur'),
+            TextField::new('email', 'Destinataires')
+                ->setHelp('Séparez les emails par des virgules'),
             TextField::new('subject', 'Sujet'),
             TextEditorField::new('message', 'Message Commun')
                 ->setNumOfRows(20) ->formatValue(function ($value) {
@@ -92,9 +96,9 @@ class BulkContactCrudController extends AbstractCrudController
      */
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        foreach ($entityInstance->getEmail() as $email) {
+        foreach ($entityInstance->getEmailArray() as $email) {
             $email = (new TemplatedEmail())
-                ->from(new Address($this->parameterBag->get('mail.support'), 'Spaarple'))
+                ->from(new Address($entityInstance->getExpeditor()->value, 'Spaarple'))
                 ->to($email)
                 ->subject($entityInstance->getSubject())
                 ->textTemplate('admin/email/bulk_contact.txt.twig')
@@ -110,6 +114,5 @@ class BulkContactCrudController extends AbstractCrudController
 
         parent::persistEntity($entityManager, $entityInstance);
     }
-
 
 }
