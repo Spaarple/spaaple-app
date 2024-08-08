@@ -5,6 +5,9 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     mail.support: '%env(MAIL_SUPPORT)%'
+    mail.contact: '%env(MAIL_CONTACT)%'
+    mail.maxime: '%env(MAIL_MAXIME)%'
+    mail.louka: '%env(MAIL_LOUKA)%'
 
 services:
     # default configuration for services in *this* file
