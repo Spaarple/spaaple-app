@@ -111,5 +111,4 @@ class BulkContactCrudController extends AbstractCrudController
         parent::persistEntity($entityManager, $entityInstance);
     }
 
-
 }
